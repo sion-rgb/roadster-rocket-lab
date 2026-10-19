@@ -1,0 +1,89 @@
+{
+  "url": "http://127.0.0.1:5190/?qa=1",
+  "mode": "mobile",
+  "state": "active-flight",
+  "requestedState": "active-flight",
+  "appliedState": "active-flight",
+  "runId": "graphics-v2-20261019",
+  "seed": null,
+  "screenshotPath": "artifacts\\graphics-v2\\inspection\\mobile-active-flight.png",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 2070 SUPER (0x00001E84) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)",
+    "softwareRendered": false
+  },
+  "result": {
+    "ok": true,
+    "reason": "nonblank",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844
+    },
+    "drawingBuffer": {
+      "width": 390,
+      "height": 844
+    },
+    "alphaPixels": 4115,
+    "variance": 239,
+    "colorBuckets": 189,
+    "metrics": {
+      "colorBuckets": 276,
+      "colorEntropyBits": 5.63,
+      "edgeDensity": 0.321,
+      "luminance": {
+        "mean": 77,
+        "p5": 24.3,
+        "p95": 160.9,
+        "contrast": 136.6
+      },
+      "dominantColorShare": 0.066,
+      "nonBackgroundShare": 0.934
+    },
+    "renderBudget": {
+      "tier": "mobile",
+      "note": "starting-point budget; adjust per game and document overrides",
+      "rows": [
+        {
+          "metric": "calls",
+          "actual": 116,
+          "limit": 150,
+          "ok": true
+        },
+        {
+          "metric": "triangles",
+          "actual": 645723,
+          "limit": 300000,
+          "ok": false
+        },
+        {
+          "metric": "geometries",
+          "actual": 90,
+          "limit": 200,
+          "ok": true
+        },
+        {
+          "metric": "textures",
+          "actual": 29,
+          "limit": 40,
+          "ok": true
+        }
+      ],
+      "withinBudget": false
+    },
+    "diagnostics": {
+      "renderer": {
+        "calls": 116,
+        "triangles": 645723,
+        "geometries": 90,
+        "textures": 29,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 1024
+      }
+    }
+  },
+  "consoleErrors": [],
+  "pageErrors": []
+}

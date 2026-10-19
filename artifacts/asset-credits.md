@@ -30,3 +30,16 @@ The sculpted fallback car in `src/car.ts` and the rocket nozzles are original pr
 The desktop hero's ~609k triangles are deliberately concentrated in one car. At initial viewport widths of 760 px or less, `car.ts` selects an offline-generated `roadster-mobile.glb` adaptation containing 201,937 triangles (66.8% fewer). The original is preserved unchanged. The derivative retains 105 primitives, all 26 materials, 10 embedded images and all four wheel nodes, with source normals and UV data retained. It was generated using glTF Transform 4.5.1, meshoptimizer 1.3.0 and Draco 1.5.9, targeting a 0.30 triangle ratio with relative geometric error capped at 0.005. Topology constraints made the achieved ratio 0.332. Output size is 6,868,844 bytes; textures dominate the file size. The browser performs no runtime simplification. Geometry statistics are recorded in `artifacts/car-lod-inspection.json`.
 
 Shared-material merging reduces draw calls. Runtime renderer measurements and mobile performance must be evaluated in the complete scene; static metadata alone does not prove frame rate or visual quality. Material adjustments simplify some WebGI-specific effects from the mirror. The model is a fan-authored interpretation rather than manufacturer CAD. The mobile derivative discards unsupported optional WebGI-specific metadata during glTF Transform processing; standard glTF PBR, clearcoat, tint and texture-transform extensions are retained.
+
+## v1.1 outdoor lighting and PBR surfaces
+
+The following assets are supplied by [Poly Haven](https://polyhaven.com/) under [CC0](https://polyhaven.com/license). They are bundled locally and require no player account or asset-service connection.
+
+- [Kloppenheim 06 (Pure Sky)](https://polyhaven.com/a/kloppenheim_06_puresky), original by Greg Zaal, sky edits by Jarod Guest: 2k HDR for desktop and 1k HDR for mobile, used for outdoor lighting, background and reflections. Local files: `public/assets/hdri/coastal-sky-2k.hdr`, `coastal-sky-1k.hdr`. Exact URLs, byte sizes and SHA-256: `public/assets/hdri/sources.json`.
+- [Asphalt 02](https://polyhaven.com/a/asphalt_02): 1k photographic diffuse, OpenGL normal and roughness, used on roads / pads.
+- [Concrete Pavement](https://polyhaven.com/a/concrete_pavement): 1k diffuse, OpenGL normal and roughness, used on the promenade.
+- [Rock Face 03](https://polyhaven.com/a/rock_face_03): 1k diffuse, OpenGL normal and roughness, used on the coastal armour stones.
+
+All nine surface files, source asset pages, original download URLs and SHA-256 hashes are recorded in `public/assets/surfaces/sources.json`. Albedo textures use sRGB; normal and roughness textures use linear data. Browser code performs metre-scale UV projection. Original source files are retained without recompression.
+
+The v1.1 nozzle assemblies, machined rings, cooling slots, gimbal mounts, curb profiles, terminal sail canopy, drainage, pad markings, low planting and terrain height fields are original authored geometry / canvas markings. They use the application's MIT source license. Physical automotive material adjustments retain the Roadster model's embedded tread, carbon and paint maps; the original GLB is unchanged. Dynamic cubemap / planar reflection textures are produced by rendering this scene at runtime, not downloaded artwork.

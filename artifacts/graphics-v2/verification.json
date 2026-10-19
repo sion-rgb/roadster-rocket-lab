@@ -1,0 +1,451 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:5190/",
+  "date": "2026-10-19T08:24:27.915Z",
+  "assetChecks": 11,
+  "states": [
+    {
+      "label": "desktop-showcase",
+      "snapshot": {
+        "vehicle": {
+          "mode": "showcase",
+          "position": [
+            0,
+            0.6578421592712402,
+            8
+          ],
+          "velocity": [
+            0,
+            -0.06120985746383667,
+            0
+          ],
+          "speed": 0.22035548686981202,
+          "altitude": 0.007842159271240212,
+          "energy": 100,
+          "grounded": true,
+          "assist": false,
+          "crashed": false,
+          "landings": 0,
+          "attitude": [
+            0,
+            0,
+            0
+          ],
+          "wheels": [
+            {
+              "contact": true,
+              "suspension": 0.2378421425819397
+            },
+            {
+              "contact": true,
+              "suspension": 0.2378421425819397
+            },
+            {
+              "contact": true,
+              "suspension": 0.2378421425819397
+            },
+            {
+              "contact": true,
+              "suspension": 0.2378421425819397
+            }
+          ]
+        },
+        "camera": "chase",
+        "cameraPosition": [
+          -5.012170458170866,
+          3.6500000000000066,
+          -0.4921591918933572
+        ],
+        "cameraTarget": [
+          1.7,
+          0.9,
+          8
+        ],
+        "transition": false,
+        "paused": false,
+        "events": [],
+        "asset": {
+          "source": "licensed-glb",
+          "triangles": 608769,
+          "meshes": 46,
+          "materials": 26,
+          "dimensions": [
+            2,
+            1.15,
+            4.5
+          ],
+          "quality": "desktop"
+        },
+        "graphics": {
+          "hdr": "CC0 Kloppenheim 06",
+          "localReflections": true,
+          "waterReflection": true,
+          "wetPadReflection": true,
+          "cubeUpdates": 9,
+          "planarUpdates": 64,
+          "reflectionSize": 512,
+          "quality": "high",
+          "postPasses": 2,
+          "frames": 243,
+          "meanCalls": 167.3251028806586,
+          "peakCalls": 669,
+          "meanTriangles": 1558596.2716049384,
+          "peakTriangles": 5264732,
+          "reflectionMaterials": 11
+        },
+        "renderer": {
+          "calls": 312,
+          "triangles": 3004176,
+          "geometries": 90,
+          "textures": 45,
+          "dpr": 1,
+          "fps": 75,
+          "shadowMap": 2048
+        },
+        "physics": {
+          "bodies": 1,
+          "colliders": 317,
+          "fixedStep": 0.016666666666666666
+        },
+        "audio": {
+          "enabled": false
+        }
+      }
+    },
+    {
+      "label": "desktop-active-flight",
+      "snapshot": {
+        "vehicle": {
+          "mode": "flight",
+          "position": [
+            0,
+            16.66203498840332,
+            8
+          ],
+          "velocity": [
+            0,
+            0.0013557836646214128,
+            0
+          ],
+          "speed": 0.0048808211926370864,
+          "altitude": 16.01203498840332,
+          "energy": 84.6150000000002,
+          "grounded": false,
+          "assist": false,
+          "crashed": false,
+          "landings": 0,
+          "attitude": [
+            0,
+            0,
+            0
+          ],
+          "wheels": [
+            {
+              "contact": false,
+              "suspension": 0.30000001192092896
+            },
+            {
+              "contact": false,
+              "suspension": 0.30000001192092896
+            },
+            {
+              "contact": false,
+              "suspension": 0.30000001192092896
+            },
+            {
+              "contact": false,
+              "suspension": 0.30000001192092896
+            }
+          ]
+        },
+        "camera": "chase",
+        "cameraPosition": [
+          0.005885261783809863,
+          19.36378414629267,
+          16.19999999999558
+        ],
+        "cameraTarget": [
+          1.7,
+          0.9,
+          8
+        ],
+        "transition": false,
+        "paused": false,
+        "events": [
+          {
+            "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+            "time": 10340.5
+          }
+        ],
+        "asset": {
+          "source": "licensed-glb",
+          "triangles": 608769,
+          "meshes": 46,
+          "materials": 26,
+          "dimensions": [
+            2,
+            1.15,
+            4.5
+          ],
+          "quality": "desktop"
+        },
+        "graphics": {
+          "hdr": "CC0 Kloppenheim 06",
+          "localReflections": true,
+          "waterReflection": true,
+          "wetPadReflection": true,
+          "cubeUpdates": 21,
+          "planarUpdates": 115,
+          "reflectionSize": 512,
+          "quality": "high",
+          "postPasses": 2,
+          "frames": 586,
+          "meanCalls": 160.74402730375434,
+          "peakCalls": 669,
+          "meanTriangles": 1465876.9368600678,
+          "peakTriangles": 5264732,
+          "reflectionMaterials": 11
+        },
+        "renderer": {
+          "calls": 138,
+          "triangles": 1270256,
+          "geometries": 91,
+          "textures": 45,
+          "dpr": 1,
+          "fps": 75,
+          "shadowMap": 2048
+        },
+        "physics": {
+          "bodies": 1,
+          "colliders": 317,
+          "fixedStep": 0.016666666666666666
+        },
+        "audio": {
+          "enabled": false
+        }
+      }
+    },
+    {
+      "label": "mobile-showcase",
+      "snapshot": {
+        "vehicle": {
+          "mode": "showcase",
+          "position": [
+            0,
+            0.6578421592712402,
+            8
+          ],
+          "velocity": [
+            0,
+            -0.06120985746383667,
+            0
+          ],
+          "speed": 0.22035548686981202,
+          "altitude": 0.007842159271240212,
+          "energy": 100,
+          "grounded": true,
+          "assist": false,
+          "crashed": false,
+          "landings": 0,
+          "attitude": [
+            0,
+            0,
+            0
+          ],
+          "wheels": [
+            {
+              "contact": true,
+              "suspension": 0.2378421425819397
+            },
+            {
+              "contact": true,
+              "suspension": 0.2378421425819397
+            },
+            {
+              "contact": true,
+              "suspension": 0.2378421425819397
+            },
+            {
+              "contact": true,
+              "suspension": 0.2378421425819397
+            }
+          ]
+        },
+        "camera": "chase",
+        "cameraPosition": [
+          -8.073257875248618,
+          4.75,
+          -5.42278759300997
+        ],
+        "cameraTarget": [
+          0.35,
+          0.8999999999999969,
+          8
+        ],
+        "transition": false,
+        "paused": false,
+        "events": [],
+        "asset": {
+          "source": "licensed-glb",
+          "triangles": 201937,
+          "meshes": 46,
+          "materials": 26,
+          "dimensions": [
+            2,
+            1.15,
+            4.5
+          ],
+          "quality": "mobile"
+        },
+        "graphics": {
+          "hdr": "CC0 Kloppenheim 06",
+          "localReflections": false,
+          "waterReflection": true,
+          "wetPadReflection": false,
+          "cubeUpdates": 0,
+          "planarUpdates": 11,
+          "reflectionSize": 256,
+          "quality": "balanced",
+          "postPasses": 0,
+          "frames": 243,
+          "meanCalls": 113.69958847736622,
+          "peakCalls": 281,
+          "meanTriangles": 666284.4773662543,
+          "peakTriangles": 1540348,
+          "reflectionMaterials": 11
+        },
+        "renderer": {
+          "calls": 109,
+          "triangles": 642135,
+          "geometries": 84,
+          "textures": 29,
+          "dpr": 1,
+          "fps": 75,
+          "shadowMap": 1024
+        },
+        "physics": {
+          "bodies": 1,
+          "colliders": 317,
+          "fixedStep": 0.016666666666666666
+        },
+        "audio": {
+          "enabled": false
+        }
+      }
+    },
+    {
+      "label": "mobile-active-flight",
+      "snapshot": {
+        "vehicle": {
+          "mode": "flight",
+          "position": [
+            0,
+            16.661989212036133,
+            8
+          ],
+          "velocity": [
+            0,
+            0.0015340580139309168,
+            0
+          ],
+          "speed": 0.005522608850151301,
+          "altitude": 16.011989212036134,
+          "energy": 84.72166666666685,
+          "grounded": false,
+          "assist": false,
+          "crashed": false,
+          "landings": 0,
+          "attitude": [
+            0,
+            0,
+            0
+          ],
+          "wheels": [
+            {
+              "contact": false,
+              "suspension": 0.30000001192092896
+            },
+            {
+              "contact": false,
+              "suspension": 0.30000001192092896
+            },
+            {
+              "contact": false,
+              "suspension": 0.30000001192092896
+            },
+            {
+              "contact": false,
+              "suspension": 0.30000001192092896
+            }
+          ]
+        },
+        "camera": "chase",
+        "cameraPosition": [
+          0.006278426547032109,
+          20.457803122162687,
+          20.499999999992244
+        ],
+        "cameraTarget": [
+          0.35,
+          0.8999999999999969,
+          8
+        ],
+        "transition": false,
+        "paused": false,
+        "events": [
+          {
+            "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+            "time": 8877.099999964237
+          }
+        ],
+        "asset": {
+          "source": "licensed-glb",
+          "triangles": 201937,
+          "meshes": 46,
+          "materials": 26,
+          "dimensions": [
+            2,
+            1.15,
+            4.5
+          ],
+          "quality": "mobile"
+        },
+        "graphics": {
+          "hdr": "CC0 Kloppenheim 06",
+          "localReflections": false,
+          "waterReflection": true,
+          "wetPadReflection": false,
+          "cubeUpdates": 0,
+          "planarUpdates": 24,
+          "reflectionSize": 256,
+          "quality": "balanced",
+          "postPasses": 0,
+          "frames": 565,
+          "meanCalls": 115.79823008849556,
+          "peakCalls": 281,
+          "meanTriangles": 660805.9168141591,
+          "peakTriangles": 1540348,
+          "reflectionMaterials": 11
+        },
+        "renderer": {
+          "calls": 116,
+          "triangles": 645723,
+          "geometries": 90,
+          "textures": 29,
+          "dpr": 1,
+          "fps": 75,
+          "shadowMap": 1024
+        },
+        "physics": {
+          "bodies": 1,
+          "colliders": 317,
+          "fixedStep": 0.016666666666666666
+        },
+        "audio": {
+          "enabled": false
+        }
+      }
+    }
+  ],
+  "errors": []
+}

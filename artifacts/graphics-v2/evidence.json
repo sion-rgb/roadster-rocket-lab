@@ -1,0 +1,12 @@
+{
+  "version":1,
+  "runId":"graphics-v2-20261019",
+  "captures":[
+    {"mode":"desktop","state":"active-driving","report":"artifacts/graphics-v2/inspection/desktop-active-driving.json"},
+    {"mode":"desktop","state":"active-flight","report":"artifacts/graphics-v2/inspection/desktop-active-flight.json"},
+    {"mode":"desktop","state":"cockpit","report":"artifacts/graphics-v2/inspection/desktop-cockpit.json"},
+    {"mode":"desktop","state":"spectator","report":"artifacts/graphics-v2/inspection/desktop-spectator.json"},
+    {"mode":"mobile","state":"active-flight","report":"artifacts/graphics-v2/inspection/mobile-active-flight.json"}
+  ],
+  "artifacts":["artifacts/browser-report.json","artifacts/motion/desktop-playthrough.webm","public/assets/hdri/coastal-sky-2k.hdr","public/assets/surfaces/asphalt_02_nor_gl_1k.jpg"]
+}

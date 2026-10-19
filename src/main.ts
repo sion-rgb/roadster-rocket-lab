@@ -10,6 +10,7 @@ import { CameraRig, type CameraView } from './cameras';
 import { Input } from './input';
 import { SynthAudio } from './audio';
 import { RocketVFX } from './vfx';
+import { createRendering } from './rendering';
 import { mountUI } from './ui';
 import './style.css';
 
@@ -41,7 +42,7 @@ async function init(){
   const audio=new SynthAudio(),vfx=new RocketVFX(scene);
   const notify=(message:string)=>{
     events.push({message,time:performance.now()});if(events.length>30)events.shift();
-    $('#toast').textContent=message;gsap.fromTo('#toast',{opacity:.4,y:7},{opacity:1,y:0,duration:.35});
+    gsap.killTweensOf('#toast');$('#toast').textContent=message;gsap.fromTo('#toast',{opacity:.4,y:7},{opacity:1,y:0,duration:.35});gsap.to('#toast',{opacity:0,duration:.4,delay:4});
     if(message.includes('完成')||message.includes('著地'))audio.chime();
   };sim.onEvent=notify;
   const chooseCamera=(view:CameraView)=>{rig.set(view);document.querySelectorAll<HTMLButtonElement>('[data-camera]').forEach(b=>{const active=b.dataset.camera===view;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});};
@@ -77,13 +78,20 @@ async function init(){
   for(const z of [-1.43,1.42])for(const x of [-.9,.9])shadowParts.push(new THREE.CylinderGeometry(.32,.32,.22,12).rotateZ(Math.PI/2).translate(x,-.33,z));
   const proxy=new THREE.Mesh(mergeGeometries(shadowParts),new THREE.MeshBasicMaterial({colorWrite:false,depthWrite:false}));
   proxy.name='Lightweight car shadow proxy';proxy.castShadow=true;car.group.add(proxy);shadowParts.forEach(g=>g.dispose());
+  $('#loading-status').textContent='正在建立戶外 HDR 光照與場景反射…';
+  const graphics=await createRendering(renderer,scene,camera,car.group,sun,mobile);
+  if(!mobile){proxy.castShadow=false;car.group.traverse(o=>{if(o instanceof THREE.Mesh&&!(Array.isArray(o.material))&&/^(car_main_paint|Thread|Sidewall)$/.test(o.material.name))o.castShadow=true;});}
+  renderer.info.autoReset=false;
+  if(graphics.stats.hdr.startsWith('CC0'))env.dispose();
+  graphics.resize();window.addEventListener('resize',()=>graphics.resize());
   // Keep the car centred to the right of the editorial title in the initial showcase.
   car.group.position.copy(sim.position);
-  rig.controls.target.copy(sim.position).add(new THREE.Vector3(-2,0,0));
+  rig.controls.target.copy(sim.position).add(new THREE.Vector3(mobile?.35:1.7,.15,0));
   rig.controls.update();
+  $('#toast').style.opacity='0';
   gsap.to('#loading',{autoAlpha:0,duration:.65,onComplete:()=>{$('#loading').style.display='none';}});
   gsap.from(['.topbar','.location','.intro','.camera-switch','.telemetry'],{opacity:0,y:15,duration:.9,stagger:.1,ease:'power2.out',delay:.15});
-  let prior=performance.now(),accumulator=0,time=0,hudClock=0,wheelSpin=0,frames=0,fps=60,frameClock=0,shadowClock=0;
+  let prior=performance.now(),accumulator=0,time=0,hudClock=0,wheelSpin=0,frames=0,fps=60,frameClock=0;
   let lastMode:Mode|'none'='none';
   const updateHUD=()=>{
     const data=sim.snapshot();$('#speed').textContent=Math.round(data.speed).toString().padStart(3,'0');$('#speed-label').textContent=sim.mode==='flight'?'AIR SPEED · SIM':'GROUND SPEED';
@@ -105,7 +113,7 @@ async function init(){
       lastMode=sim.mode;
     }
   };
-  const diagnostics=()=>({vehicle:sim.snapshot(),camera:rig.view,cameraPosition:camera.position.toArray(),cameraTarget:rig.controls.target.toArray(),transition:rig.transitioning,paused,events:events.slice(),asset:car.diagnostics,renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,dpr:renderer.getPixelRatio(),fps,shadowMap:mobile?1024:2048},physics:{bodies:physics.bodies.len(),colliders:physics.colliders.len(),fixedStep:SIM.fixedStep},audio:{enabled:audio.enabled,state:audio.context?.state}});
+  const diagnostics=()=>({vehicle:sim.snapshot(),camera:rig.view,cameraPosition:camera.position.toArray(),cameraTarget:rig.controls.target.toArray(),transition:rig.transitioning,paused,events:events.slice(),asset:car.diagnostics,graphics:{...graphics.stats,reflectionMaterials:graphics.reflectionMaterials},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,dpr:renderer.getPixelRatio(),fps,shadowMap:mobile?1024:2048},physics:{bodies:physics.bodies.len(),colliders:physics.colliders.len(),fixedStep:SIM.fixedStep},audio:{enabled:audio.enabled,state:audio.context?.state}});
   if(new URLSearchParams(location.search).has('qa')){
     Object.assign(window,{__ROADSTER__:{snapshot:diagnostics},__THREE_GAME_DIAGNOSTICS__:{get renderer(){return diagnostics().renderer;}},__THREE_GAME_TEST_HOOKS__:{
       async setState(state:string){
@@ -119,6 +127,7 @@ async function init(){
     }});
   }
   renderer.setAnimationLoop(()=>{
+    renderer.info.reset();
     const now=performance.now(),dt=Math.min((now-prior)/1000,.1);prior=now;
     if(!paused){
       time+=dt;accumulator=Math.min(.1,accumulator+dt);
@@ -129,9 +138,9 @@ async function init(){
       world.update(dt,time);vfx.update(dt,sim.thrust,car.thrusters);
     }else accumulator=0;
     rig.update(paused?0:dt,time);
-    shadowClock+=dt;if(shadowClock>.4){sun.target.position.copy(sim.position);sun.position.copy(sim.position).add(new THREE.Vector3(-80,120,-70));shadowClock=0;}
+    graphics.update(dt,time,sim.position,sim.rotation,sim.thrust);
     audio.update(sim.velocity.length(),sim.thrust,paused);
-    renderer.render(scene,camera);
+    graphics.render(dt);
     frames++;frameClock+=dt;if(frameClock>1){fps=Math.round(frames/frameClock);frameClock=0;frames=0;}
     hudClock+=dt;if(hudClock>.08){updateHUD();hudClock=0;}
   });

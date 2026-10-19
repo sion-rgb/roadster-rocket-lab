@@ -2,6 +2,8 @@
 
 非官方 Tesla Roadster Rocket Edition 風格的 3D 展示、沿海駕駛及飛行沙盒。
 
+**v1.1 畫質提升：**戶外 HDR 天空與光照、車漆 / 玻璃的場景反射、海面及濕潤停機坪平面反射、真實 PBR 道路、金屬推進器細節、連續海岸山脊及更柔和陰影。[新舊畫面及驗證](artifacts/graphics-v2/README.md)。
+
 **[直接試玩](https://sion-rgb.github.io/roadster-rocket-lab/)** · **[驗證報告](artifacts/final-evidence.md)** · **[車模來源與授權](ASSET_CREDITS.md)**
 
 ![Roadster Rocket](artifacts/captures/desktop-showcase.png)
@@ -17,7 +19,8 @@
 - 即時速度、高度、垂直速度、俯仰、翻滾、航向、能量與接地狀態；落地充能、低能量自動緊急下降。
 - 三個停機區、硬著陸回饋、R 快速重置；越界或落海安全返回。
 - 合法授權詳細 GLB/PBR 車模、獨立車輪、駕駛艙內裝、原創推進器及粒子。
-- 動態陰影、環境反射、動畫海水及天空、材質地面、實例化城市與棕櫚樹。
+- 戶外 HDR 光照、動態車身 cubemap、海面及停機坪平面反射、PBR 照片材質道路、柔和 PCF 與接地陰影。
+- 推進器精細噴嘴 / 金屬固定環、曲面航站樓雨棚、排水格柵、路緣石、海岸礁石、停機坪標記及連續山脊。
 - Web Audio 電動機與推進器音效，預設靜音，使用者按音效鍵後啟用；可暫停、關閉音效。
 - 鍵盤、滑鼠、手機觸控及 Gamepad 輸入接口。支援減少動態效果偏好。
 
@@ -88,7 +91,11 @@ npm run test:browser
 
 `src/physics.ts` 負責物理與模擬參數；`input.ts` 統一鍵盤 / 觸控 / Gamepad 意圖；`cameras.ts` 管理視角及 GSAP 過渡；`car.ts` 載入模型；`world.ts` 建立場景；`main.ts` 統一輸入 → 固定物理 → 車模同步 → VFX / HUD / 相機 → 繪圖。
 
-初次載入寬度 ≤760px 使用約 202k triangles 的手機車模，桌面保留約 609k；保留同一材質及紋理。實例化重複建築元素，使用簡單碰撞體；DPR 上限桌面 1.75 / 手機 1.25，單方向陰影 2048 / 1024，沒有全螢幕後製通道。手機版依然有較高幾何負擔，詳細數據與限制見驗證報告。
+初次載入寬度 ≤760px 使用約 202k triangles 的手機車模，桌面保留約 609k；保留同一材質及紋理。實例化重複建築元素，使用簡單碰撞體；DPR 上限桌面 1.75 / 手機 1.25，單方向陰影 2048 / 1024。桌面使用 4× MSAA HDR target、輕微 Bloom 和 OutputPass；手機直接繪圖。
+
+v1.1 桌面使用 2k 戶外 HDR、128px 車身反射 cubemap（約每 0.38 秒更新）、512px 海面 / 停機坪平面反射（約每 0.1 秒更新）。手機使用 1k HDR、256px 海面反射（約每 0.33 秒更新），關閉動態車身 cubemap、停機坪反射及 Bloom。反射是有更新間隔的近似；移動時可見輕微更新延遲。手機版仍有較高幾何負擔，實體低階手機表現待驗證。
+
+`src/rendering.ts` 負責 HDR、燈光、反射及後製；`world-detail.ts` / `car-details.ts` 分別負責新增世界及推進器模型。渲染診斷包含所有反射與後製 pass 的平均 / 峰值 draw calls，避免只量最後一個畫面 pass。
 
 Vite 的 Rapier WASM 相容包約 2.24 MB（gzip 約 0.83 MB），會產生 chunk 大小提示；已分離 physics / three bundle。這是資產體積提示，並非編譯失敗。
 

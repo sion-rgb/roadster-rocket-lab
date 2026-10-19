@@ -1,0 +1,707 @@
+[
+  {
+    "phase": "before",
+    "label": "desktop-showcase",
+    "errors": [],
+    "warnings": [
+      "using deprecated parameters for the initialization function; pass a single object instead",
+      "THREE.WebGLProgram: Program Info Log: (210,81-129): warning X4122: sum of 0.996094 and -2.98545e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision",
+      "THREE.DRACOLoader: setDecoderConfig to has been deprecated and will be removed in r194."
+    ],
+    "snapshot": {
+      "vehicle": {
+        "mode": "showcase",
+        "position": [
+          0,
+          0.6578421592712402,
+          8
+        ],
+        "velocity": [
+          0,
+          -0.06120985746383667,
+          0
+        ],
+        "speed": 0.22035548686981202,
+        "altitude": 0.007842159271240212,
+        "energy": 100,
+        "grounded": true,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          },
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          },
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          },
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        4.865586079921004,
+        3.950000000000004,
+        16.11564709553067
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": true,
+      "events": [],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 608769,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "desktop"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 1016285,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 2048
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    }
+  },
+  {
+    "phase": "before",
+    "label": "desktop-active-driving",
+    "errors": [],
+    "warnings": [
+      "using deprecated parameters for the initialization function; pass a single object instead",
+      "THREE.DRACOLoader: setDecoderConfig to has been deprecated and will be removed in r194."
+    ],
+    "snapshot": {
+      "vehicle": {
+        "mode": "drive",
+        "position": [
+          0,
+          0.657841682434082,
+          -37.53053665161133
+        ],
+        "velocity": [
+          0,
+          -0.06121094152331352,
+          -12.20631217956543
+        ],
+        "speed": 43.9432763606064,
+        "altitude": 0.007841682434082009,
+        "energy": 100,
+        "grounded": true,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          -0.001457508559571999,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": true,
+            "suspension": 0.23572897911071777
+          },
+          {
+            "contact": true,
+            "suspension": 0.23572897911071777
+          },
+          {
+            "contact": true,
+            "suspension": 0.23995572328567505
+          },
+          {
+            "contact": true,
+            "suspension": 0.23995572328567505
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        7.543839033701979e-16,
+        3.3578416824322965,
+        -26.945099762773626
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": true,
+      "events": [
+        {
+          "message": "道路模式 · W 加速，A / D 轉向",
+          "time": 1373.1000000238419
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 608769,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "desktop"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 1016285,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 2048
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    }
+  },
+  {
+    "phase": "before",
+    "label": "desktop-active-flight",
+    "errors": [],
+    "warnings": [
+      "using deprecated parameters for the initialization function; pass a single object instead",
+      "THREE.DRACOLoader: setDecoderConfig to has been deprecated and will be removed in r194."
+    ],
+    "snapshot": {
+      "vehicle": {
+        "mode": "flight",
+        "position": [
+          0,
+          16.66187286376953,
+          8
+        ],
+        "velocity": [
+          0,
+          0.001964033115655184,
+          0
+        ],
+        "speed": 0.007070519216358662,
+        "altitude": 16.011872863769533,
+        "energy": 84.93500000000016,
+        "grounded": false,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        -0.11119802933759888,
+        19.442795162935408,
+        16.199999999999203
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": true,
+      "events": [
+        {
+          "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+          "time": 2404.800000011921
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 608769,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "desktop"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 1016285,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 2048
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    }
+  },
+  {
+    "phase": "before",
+    "label": "desktop-cockpit",
+    "errors": [],
+    "warnings": [
+      "using deprecated parameters for the initialization function; pass a single object instead",
+      "THREE.DRACOLoader: setDecoderConfig to has been deprecated and will be removed in r194."
+    ],
+    "snapshot": {
+      "vehicle": {
+        "mode": "flight",
+        "position": [
+          0,
+          16.661842346191406,
+          8
+        ],
+        "velocity": [
+          0,
+          0.002089177491143346,
+          0
+        ],
+        "speed": 0.0075210389681160455,
+        "altitude": 16.011842346191408,
+        "energy": 84.98833333333349,
+        "grounded": false,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          }
+        ]
+      },
+      "camera": "cockpit",
+      "cameraPosition": [
+        -0.46353488688382255,
+        16.89750469911767,
+        7.720000000000001
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": true,
+      "events": [
+        {
+          "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+          "time": 1293.800000011921
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 608769,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "desktop"
+      },
+      "renderer": {
+        "calls": 80,
+        "triangles": 859977,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 2048
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    }
+  },
+  {
+    "phase": "before",
+    "label": "desktop-spectator",
+    "errors": [],
+    "warnings": [
+      "using deprecated parameters for the initialization function; pass a single object instead",
+      "THREE.DRACOLoader: setDecoderConfig to has been deprecated and will be removed in r194."
+    ],
+    "snapshot": {
+      "vehicle": {
+        "mode": "flight",
+        "position": [
+          0,
+          16.661842346191406,
+          8
+        ],
+        "velocity": [
+          0,
+          0.002089177491143346,
+          0
+        ],
+        "speed": 0.0075210389681160455,
+        "altitude": 16.011842346191408,
+        "energy": 84.98833333333349,
+        "grounded": false,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          }
+        ]
+      },
+      "camera": "spectator",
+      "cameraPosition": [
+        47.62976087095458,
+        44.65151166927292,
+        56.367318002333434
+      ],
+      "cameraTarget": [
+        -9.070504856861696e-14,
+        17.051537490036946,
+        8
+      ],
+      "transition": false,
+      "paused": true,
+      "events": [
+        {
+          "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+          "time": 1356.1000000238419
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 608769,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "desktop"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 1016285,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 2048
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    }
+  },
+  {
+    "phase": "before",
+    "label": "mobile-showcase",
+    "errors": [],
+    "warnings": [
+      "using deprecated parameters for the initialization function; pass a single object instead",
+      "THREE.DRACOLoader: setDecoderConfig to has been deprecated and will be removed in r194."
+    ],
+    "snapshot": {
+      "vehicle": {
+        "mode": "showcase",
+        "position": [
+          0,
+          0.6578421592712402,
+          8
+        ],
+        "velocity": [
+          0,
+          -0.06120985746383667,
+          0
+        ],
+        "speed": 0.22035548686981202,
+        "altitude": 0.007842159271240212,
+        "energy": 100,
+        "grounded": true,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          },
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          },
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          },
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        4.8983059201760195,
+        3.950000000000006,
+        16.087853573826926
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": true,
+      "events": [],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 201937,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "mobile"
+      },
+      "renderer": {
+        "calls": 97,
+        "triangles": 542851,
+        "geometries": 64,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 1024
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    }
+  },
+  {
+    "phase": "before",
+    "label": "mobile-active-flight",
+    "errors": [],
+    "warnings": [
+      "using deprecated parameters for the initialization function; pass a single object instead",
+      "THREE.DRACOLoader: setDecoderConfig to has been deprecated and will be removed in r194."
+    ],
+    "snapshot": {
+      "vehicle": {
+        "mode": "flight",
+        "position": [
+          0,
+          16.661842346191406,
+          8
+        ],
+        "velocity": [
+          0,
+          0.002089177491143346,
+          0
+        ],
+        "speed": 0.0075210389681160455,
+        "altitude": 16.011842346191408,
+        "energy": 84.98833333333349,
+        "grounded": false,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        0.11492679463152666,
+        19.24305664506663,
+        16.199999999996344
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": true,
+      "events": [
+        {
+          "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+          "time": 1661.3999999761581
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 201937,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "mobile"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 555890,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 1024
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    }
+  }
+]

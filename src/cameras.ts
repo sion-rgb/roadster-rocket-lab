@@ -10,7 +10,7 @@ export class CameraRig {
   get transitioning(){return this.blend.value<1;}
   private upDelta=new Quaternion();private upBlend=new Quaternion();
   constructor(public camera:PerspectiveCamera,public canvas:HTMLCanvasElement,public sim:VehiclePhysics){
-    this.controls=new OrbitControls(camera,canvas);this.controls.enableDamping=true;this.controls.dampingFactor=.07;this.controls.minDistance=3.8;this.controls.maxDistance=200;this.controls.maxPolarAngle=Math.PI*.49;this.controls.target.copy(sim.position);this.look.copy(sim.position);camera.position.copy(sim.position).add(new Vector3(6,3.2,7));this.controls.update();
+    this.controls=new OrbitControls(camera,canvas);this.controls.enableDamping=true;this.controls.dampingFactor=.07;this.controls.minDistance=3.8;this.controls.maxDistance=200;this.controls.maxPolarAngle=Math.PI*.49;this.controls.target.copy(sim.position);this.look.copy(sim.position);camera.position.copy(sim.position).add(innerWidth<761?new Vector3(-10,4,-12):new Vector3(-6.2,2.9,-7.4));this.controls.update();
     canvas.addEventListener('pointerdown',e=>{this.drag=true;this.last={x:e.clientX,y:e.clientY};});
     window.addEventListener('pointerup',()=>this.drag=false);
     canvas.addEventListener('pointercancel',()=>this.drag=false);
@@ -34,8 +34,8 @@ export class CameraRig {
     }else{
       this.desiredUp.set(0,1,0);
       this.euler.setFromQuaternion(r,'YXZ');this.yaw.setFromAxisAngle(new Vector3(0,1,0),this.euler.y);
-      const offset=this.view==='spectator'?new Vector3(48,28,48):showcase?new Vector3(6,3.2,7):new Vector3(0,2.7,8.2);
-      this.desired.copy(offset).applyQuaternion(this.yaw).add(p);this.target.copy(p).add(new Vector3(0,.4,0));
+      const offset=this.view==='spectator'?new Vector3(48,28,48):showcase?(innerWidth<761?new Vector3(-10,4,-12):new Vector3(-6.2,2.9,-7.4)):(innerWidth<761?new Vector3(0,3.8,12.5):new Vector3(0,2.7,8.2));
+      this.desired.copy(offset).applyQuaternion(this.yaw).add(p);this.target.copy(p).add(showcase?new Vector3(innerWidth<761?.35:1.7,.15,0):new Vector3(0,.4,0));
     }
     if(this.blend.value<1){this.camera.position.lerpVectors(this.start,this.desired,this.blend.value);this.look.lerpVectors(this.startTarget,this.target,this.blend.value);}
     else{this.camera.position.lerp(this.desired,1-Math.exp(-dt*(this.view==='cockpit'?40:5)));this.look.lerp(this.target,1-Math.exp(-dt*8));}

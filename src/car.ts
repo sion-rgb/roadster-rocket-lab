@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
+import { createRocketHardware } from './car-details';
 
 /** All dimensions are metres. Local forward is -Z; the chassis origin sits 0.65m above ground. */
 export interface CarAsset {
@@ -103,53 +104,97 @@ function createFallback(parent: THREE.Group, wheels: THREE.Group[], cockpit: THR
   return fallback;
 }
 
-function makeThrusters(group: THREE.Group): THREE.Object3D[] {
-  const metal = new THREE.MeshStandardMaterial({ color: 0x222c36, metalness: .9, roughness: .25 });
-  const inset = new THREE.MeshStandardMaterial({ color: 0x02070b, metalness: .6, roughness: .45 });
-  const rim = new THREE.MeshStandardMaterial({ color: 0x778997, metalness: .95, roughness: .18 });
-  const core = new THREE.MeshStandardMaterial({ color: 0x57d8ff, emissive: 0x21aaff, emissiveIntensity: .7 });
-  const sockets: THREE.Object3D[] = [];
-  for (const x of [-.72, .72]) for (const z of [-1.24, 1.3]) {
-    const nozzle = new THREE.Group();
-    nozzle.name = `rocketNozzle_${x < 0 ? 'L' : 'R'}_${z < 0 ? 'front' : 'rear'}`;
-    nozzle.position.set(x, -.38, z);
-    mesh(new THREE.CylinderGeometry(.11, .17, .19, 20, 1, true), metal, nozzle);
-    mesh(new THREE.CylinderGeometry(.13, .13, .018, 20), inset, nozzle, [0, -.096, 0]);
-    const lip = mesh(new THREE.TorusGeometry(.15, .018, 6, 24), rim, nozzle, [0, -.1, 0]);
-    lip.rotation.x = Math.PI / 2;
-    mesh(new THREE.CylinderGeometry(.065, .065, .02, 16), core, nozzle, [0, -.108, 0]);
-    const socket = new THREE.Object3D();
-    socket.position.y = -.13;
-    socket.rotation.z = Math.PI;
-    socket.name = `exhaustSocket_${sockets.length}`;
-    nozzle.add(socket); group.add(nozzle); sockets.push(socket);
+function tuneMaterial(material: THREE.Material, mobile: boolean): THREE.Material {
+  if (!(material instanceof THREE.MeshStandardMaterial)) return material;
+  let mat = material as THREE.MeshPhysicalMaterial;
+  if (/^(carbon_fibre|Rims)$/.test(material.name) && !mat.isMeshPhysicalMaterial) {
+    // Preserve the GLB's maps and UV transforms while enabling its hero clearcoat.
+    mat = new THREE.MeshPhysicalMaterial();
+    THREE.MeshStandardMaterial.prototype.copy.call(mat, material);
   }
-  return sockets;
-}
-
-function tuneMaterial(material: THREE.Material): void {
-  const mat = material as THREE.MeshPhysicalMaterial;
-  if (!mat.isMeshStandardMaterial) return;
+  mat.envMapIntensity = .9;
   if (mat.name === 'car_main_paint') {
-    mat.color.set(0xc20b22); mat.metalness = .64; mat.roughness = .22;
-    mat.clearcoat = 1; mat.clearcoatRoughness = .1;
+    // Metallic base pigment under a dielectric lacquer. The original fine paint
+    // normal remains intact; specular was disabled in the source viewer material.
+    mat.color.set(0xb20a20); mat.metalness = .24; mat.roughness = .25;
+    mat.clearcoat = 1; mat.clearcoatRoughness = .075;
+    mat.specularIntensity = 1; mat.ior = 1.5; mat.envMapIntensity = 1.1;
+    mat.normalScale.setScalar(.025);
+    mat.userData.localReflection = true;
   }
-  // Tinted alpha glass avoids a full-screen transmission pass on every car window.
+  // The exterior face reflects the city while the cockpit looks through the back
+  // face. This avoids double transparent layers and a costly transmission pass.
   if (/^Glass_(mid_tint|Tint_max|Clear)/.test(mat.name)) {
     mat.transmission = 0; mat.transparent = true; mat.depthWrite = false;
-    mat.opacity = /Tint_max/.test(mat.name) ? .65 : /mid_tint/.test(mat.name) ? .22 : .12;
-    mat.roughness = .11; mat.metalness = .12;
-    if (/mid_tint|Tint_max/.test(mat.name)) mat.color.set(0x2b4657);
+    mat.opacity = /Tint_max/.test(mat.name) ? .61 : /mid_tint/.test(mat.name) ? .24 : .09;
+    mat.roughness = .055; mat.metalness = 0; mat.side = THREE.FrontSide;
+    mat.clearcoat = 1; mat.clearcoatRoughness = .04; mat.specularIntensity = 1;
+    mat.envMapIntensity = /Clear/.test(mat.name) ? .7 : 1.05;
+    mat.color.set(/Clear/.test(mat.name) ? 0xdbe5e7 : 0x0a151d);
+    mat.userData.localReflection = true;
   }
   if (/headlights/.test(mat.name)) {
-    mat.color.set(0xccecff); mat.emissive.set(0x9dcfff); mat.emissiveIntensity = 2;
+    mat.color.set(0xc3d6e2); mat.emissive.set(0xc6e4ff);
+    mat.emissiveIntensity = /AHO/.test(mat.name) ? 2.4 : 1.7;
+    mat.metalness = .05; mat.roughness = .18;
+  }
+  if (/^indicator_/.test(mat.name)) {
+    // Exported tenfold emissive strength previously blew out the lamp lenses.
+    mat.color.set(0x5b2104); mat.emissive.set(0xff790a); mat.emissiveIntensity = .65;
+    mat.metalness = 0; mat.roughness = .27;
+  }
+  if (mat.name === 'Glass_Amber') {
+    mat.color.set(0x71360a); mat.metalness = 0; mat.roughness = .16;
   }
   if (/rear_lights|ior_1/.test(mat.name)) {
-    mat.emissive.set(0xff1021); mat.emissiveIntensity = 1.4;
+    mat.color.set(0x65050c); mat.emissive.set(0xff1428);
+    mat.emissiveIntensity = /DHO|ior_1/.test(mat.name) ? 1.15 : .18;
+    mat.metalness = 0; mat.roughness = .21;
   }
-  if (mat.name === 'calipers') { mat.color.set(0xaa1626); mat.roughness = .4; }
-  if (/Thread|Sidewall/.test(mat.name)) { mat.roughness = .87; mat.metalness = .04; }
+  if (mat.name === 'licence_plate_light') {
+    mat.emissive.set(0xf1e6d3); mat.emissiveIntensity = .65; mat.metalness = 0;
+  }
+  if (mat.name === 'Rims') {
+    mat.color.set(0x707780); mat.metalness = .98; mat.roughness = .255;
+    mat.clearcoat = .35; mat.clearcoatRoughness = .2;
+    mat.anisotropy = mobile ? 0 : .4;
+    mat.userData.localReflection = true;
+  }
+  if (/^(mirror|chrome)$/.test(mat.name)) {
+    mat.color.set(0xc1c8cf); mat.metalness = 1;
+    mat.roughness = mat.name === 'mirror' ? .035 : .15;
+    mat.emissiveIntensity = 0; mat.envMapIntensity = 1;
+    mat.userData.localReflection = true;
+  }
+  if (mat.name === 'Brake_Disc') {
+    mat.color.set(0x777c7f); mat.metalness = .88; mat.roughness = .42;
+  }
+  if (mat.name === 'carbon_fibre') {
+    // Original embedded carbon albedo, normal and metal/roughness maps stay bound.
+    mat.color.set(0x80858c); mat.metalness = .32; mat.roughness = .43;
+    mat.normalScale.setScalar(.38); mat.clearcoat = .7; mat.clearcoatRoughness = .16;
+    mat.userData.localReflection = true;
+  }
+  if (/^(interior|seats)$/.test(mat.name)) {
+    mat.color.set(mat.name === 'seats' ? 0x24272c : 0x14191f);
+    mat.metalness = 0; mat.roughness = mat.name === 'seats' ? .82 : .71;
+    mat.envMapIntensity = .55;
+  }
+  if (/Metal_-_Black_rough|non_lustrous_metal/.test(mat.name)) {
+    mat.color.set(0x1a2027); mat.metalness = .35; mat.roughness = .48;
+  }
+  if (mat.name === 'grill') { mat.metalness = .6; mat.roughness = .4; }
+  if (mat.name === 'calipers') {
+    mat.color.set(0xb61b25); mat.metalness = .18; mat.roughness = .36;
+  }
+  if (/Thread|Sidewall/.test(mat.name)) {
+    // Keep the licensed tread and embossed sidewall maps; only tune their response.
+    mat.roughness = /Thread/.test(mat.name) ? .9 : .78; mat.metalness = 0;
+    mat.normalScale.setScalar(/Thread/.test(mat.name) ? .75 : .6);
+    mat.envMapIntensity = .35;
+  }
   mat.needsUpdate = true;
+  return mat;
 }
 
 function releaseFallback(fallback: THREE.Group, wheels: THREE.Group[], cockpit: THREE.Group): void {
@@ -176,7 +221,7 @@ export function createCar(): CarAsset {
   });
   const cockpit = new THREE.Group(); cockpit.name = 'cockpit'; group.add(cockpit);
   const fallback = createFallback(group, wheels, cockpit);
-  const thrusters = makeThrusters(group);
+  const thrusters = createRocketHardware(group);
   // The reduced asset is generated offline; no simplification work runs on the player's device.
   const mobile = matchMedia('(max-width:760px)').matches;
   const diagnostics: CarAsset['diagnostics'] = { source: 'loading', triangles: 0, meshes: 0, materials: 0, dimensions: [2, 1.15, 4.5], quality: mobile ? 'mobile' : 'desktop' };
@@ -200,6 +245,7 @@ export function createCar(): CarAsset {
     const bins = new Map<string, { material: THREE.Material; geometries: THREE.BufferGeometry[]; wheel: number }>();
     const originals = new Set<THREE.BufferGeometry>();
     const materials = new Set<THREE.Material>();
+    const tuned = new Map<THREE.Material, THREE.Material>();
     source.traverse(object => {
       if (!(object instanceof THREE.Mesh)) return;
       originals.add(object.geometry);
@@ -208,8 +254,10 @@ export function createCar(): CarAsset {
         const index = sourceWheels.indexOf(parent);
         if (index !== -1) { wheel = index; break; }
       }
-      const material = Array.isArray(object.material) ? object.material[0] : object.material;
-      if (!materials.has(material)) { tuneMaterial(material); materials.add(material); }
+      const originalMaterial = Array.isArray(object.material) ? object.material[0] : object.material;
+      if (!tuned.has(originalMaterial)) tuned.set(originalMaterial, tuneMaterial(originalMaterial, mobile));
+      const material = tuned.get(originalMaterial)!;
+      materials.add(material);
       const geometry = object.geometry.clone().applyMatrix4(object.matrixWorld);
       if (wheel !== -1) geometry.translate(-centers[wheel].x, -centers[wheel].y, -centers[wheel].z);
       // Exported attributes are normalized before material merging so each material costs one draw call.

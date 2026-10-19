@@ -1,0 +1,89 @@
+{
+  "url": "http://127.0.0.1:5190/?qa=1",
+  "mode": "desktop",
+  "state": "active-driving",
+  "requestedState": "active-driving",
+  "appliedState": "active-driving",
+  "runId": "graphics-v2-20261019",
+  "seed": null,
+  "screenshotPath": "artifacts\\graphics-v2\\inspection\\desktop-active-driving.png",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 2070 SUPER (0x00001E84) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)",
+    "softwareRendered": false
+  },
+  "result": {
+    "ok": true,
+    "reason": "nonblank",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 960
+    },
+    "drawingBuffer": {
+      "width": 1440,
+      "height": 960
+    },
+    "alphaPixels": 4103,
+    "variance": 244,
+    "colorBuckets": 180,
+    "metrics": {
+      "colorBuckets": 264,
+      "colorEntropyBits": 5.18,
+      "edgeDensity": 0.315,
+      "luminance": {
+        "mean": 71.4,
+        "p5": 25.8,
+        "p95": 145.3,
+        "contrast": 119.5
+      },
+      "dominantColorShare": 0.093,
+      "nonBackgroundShare": 0.907
+    },
+    "renderBudget": {
+      "tier": "desktop",
+      "note": "starting-point budget; adjust per game and document overrides",
+      "rows": [
+        {
+          "metric": "calls",
+          "actual": 131,
+          "limit": 300,
+          "ok": true
+        },
+        {
+          "metric": "triangles",
+          "actual": 1268188,
+          "limit": 750000,
+          "ok": false
+        },
+        {
+          "metric": "geometries",
+          "actual": 90,
+          "limit": 300,
+          "ok": true
+        },
+        {
+          "metric": "textures",
+          "actual": 45,
+          "limit": 60,
+          "ok": true
+        }
+      ],
+      "withinBudget": false
+    },
+    "diagnostics": {
+      "renderer": {
+        "calls": 131,
+        "triangles": 1268188,
+        "geometries": 90,
+        "textures": 45,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 2048
+      }
+    }
+  },
+  "consoleErrors": [],
+  "pageErrors": []
+}

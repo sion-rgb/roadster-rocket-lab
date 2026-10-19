@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-19T01:50:43.490Z",
-  "url": "http://127.0.0.1:5188/",
+  "date": "2026-10-19T08:16:32.736Z",
+  "url": "http://127.0.0.1:5190/",
   "checks": [
     "licensed GLB loads",
     "real W input accelerates forward",
@@ -69,13 +69,13 @@
       },
       "camera": "chase",
       "cameraPosition": [
-        5.451907502807905,
-        3.9500000000000077,
-        15.580836007301292
+        -5.648612438455867,
+        3.6500000000000066,
+        0.05217669865690677
       ],
       "cameraTarget": [
-        -2,
-        0.75,
+        1.7,
+        0.9,
         8
       ],
       "transition": false,
@@ -93,18 +93,30 @@
         ],
         "quality": "desktop"
       },
+      "graphics": {
+        "hdr": "CC0 Kloppenheim 06",
+        "localReflections": true,
+        "waterReflection": true,
+        "wetPadReflection": true,
+        "cubeUpdates": 5,
+        "planarUpdates": 32,
+        "reflectionSize": 512,
+        "quality": "high",
+        "postPasses": 2,
+        "reflectionMaterials": 11
+      },
       "renderer": {
-        "calls": 107,
-        "triangles": 1016285,
-        "geometries": 74,
-        "textures": 18,
+        "calls": 133,
+        "triangles": 1257654,
+        "geometries": 90,
+        "textures": 45,
         "dpr": 1,
         "fps": 66,
         "shadowMap": 2048
       },
       "physics": {
         "bodies": 1,
-        "colliders": 88,
+        "colliders": 317,
         "fixedStep": 0.016666666666666666
       },
       "audio": {
@@ -117,14 +129,14 @@
         "position": [
           0,
           0.6577315926551819,
-          -9.06948471069336
+          -8.79867172241211
         ],
         "velocity": [
           0,
-          -0.06121229752898216,
-          -16.221799850463867
+          -0.06121225282549858,
+          -16.100688934326172
         ],
-        "speed": 58.398895227966975,
+        "speed": 57.96289905667061,
         "altitude": 0.0077315926551818626,
         "energy": 100,
         "grounded": true,
@@ -132,7 +144,7 @@
         "crashed": false,
         "landings": 0,
         "attitude": [
-          0.019421569102282238,
+          0.019421561650647148,
           0,
           0
         ],
@@ -157,13 +169,13 @@
       },
       "camera": "chase",
       "cameraPosition": [
-        7.033267157677337e-8,
-        3.35773160052441,
-        1.9957953953265073
+        -8.005820696789636e-7,
+        3.3577316353709383,
+        2.2687037348831973
       ],
       "cameraTarget": [
-        -2,
-        0.75,
+        1.7,
+        0.9,
         8
       ],
       "transition": false,
@@ -171,7 +183,7 @@
       "events": [
         {
           "message": "道路模式 · W 加速，A / D 轉向",
-          "time": 7240.099999964237
+          "time": 8435.5
         }
       ],
       "asset": {
@@ -186,18 +198,30 @@
         ],
         "quality": "desktop"
       },
+      "graphics": {
+        "hdr": "CC0 Kloppenheim 06",
+        "localReflections": true,
+        "waterReflection": true,
+        "wetPadReflection": true,
+        "cubeUpdates": 11,
+        "planarUpdates": 80,
+        "reflectionSize": 512,
+        "quality": "high",
+        "postPasses": 2,
+        "reflectionMaterials": 11
+      },
       "renderer": {
-        "calls": 107,
-        "triangles": 1016285,
-        "geometries": 74,
-        "textures": 18,
+        "calls": 136,
+        "triangles": 1270258,
+        "geometries": 90,
+        "textures": 45,
         "dpr": 1,
         "fps": 75,
         "shadowMap": 2048
       },
       "physics": {
         "bodies": 1,
-        "colliders": 88,
+        "colliders": 317,
         "fixedStep": 0.016666666666666666
       },
       "audio": {
@@ -209,17 +233,17 @@
         "mode": "flight",
         "position": [
           0,
-          17.10877799987793,
+          16.98481559753418,
           8
         ],
         "velocity": [
           0,
-          1.3704872131347656,
+          1.2883291244506836,
           0
         ],
-        "speed": 4.933753967285156,
-        "altitude": 16.45877799987793,
-        "energy": 90.15833333333283,
+        "speed": 4.6379848480224615,
+        "altitude": 16.33481559753418,
+        "energy": 90.17666666666618,
         "grounded": false,
         "assist": false,
         "crashed": false,
@@ -250,13 +274,13 @@
       },
       "camera": "chase",
       "cameraPosition": [
-        0.004457011980729744,
-        19.180145906205716,
-        16.199999999934334
+        -0.00049180129109917,
+        19.070279778298733,
+        16.199999999973212
       ],
       "cameraTarget": [
-        -2,
-        0.75,
+        1.7,
+        0.9,
         8
       ],
       "transition": false,
@@ -264,15 +288,15 @@
       "events": [
         {
           "message": "道路模式 · W 加速，A / D 轉向",
-          "time": 7240.099999964237
+          "time": 8435.5
         },
         {
           "message": "車輛已重置 · 能量充滿",
-          "time": 10385.199999988079
+          "time": 11543.900000035763
         },
         {
           "message": "Rocket 系統就緒 · 按住空白鍵起飛",
-          "time": 13534.799999952316
+          "time": 14703.100000023842
         }
       ],
       "asset": {
@@ -287,18 +311,30 @@
         ],
         "quality": "desktop"
       },
+      "graphics": {
+        "hdr": "CC0 Kloppenheim 06",
+        "localReflections": true,
+        "waterReflection": true,
+        "wetPadReflection": true,
+        "cubeUpdates": 29,
+        "planarUpdates": 186,
+        "reflectionSize": 512,
+        "quality": "high",
+        "postPasses": 2,
+        "reflectionMaterials": 11
+      },
       "renderer": {
-        "calls": 107,
-        "triangles": 1016285,
-        "geometries": 74,
-        "textures": 18,
+        "calls": 138,
+        "triangles": 1270256,
+        "geometries": 91,
+        "textures": 45,
         "dpr": 1,
         "fps": 75,
         "shadowMap": 2048
       },
       "physics": {
         "bodies": 1,
-        "colliders": 88,
+        "colliders": 317,
         "fixedStep": 0.016666666666666666
       },
       "audio": {
@@ -310,25 +346,25 @@
         "mode": "flight",
         "position": [
           0,
-          17.471887588500977,
+          17.326627731323242,
           8
         ],
         "velocity": [
           0,
-          0.016047345474362373,
+          0.013332200236618519,
           0
         ],
-        "speed": 0.057770443707704545,
-        "altitude": 16.821887588500978,
-        "energy": 86.31833333333326,
+        "speed": 0.04799592085182667,
+        "altitude": 16.676627731323244,
+        "energy": 86.22999999999995,
         "grounded": false,
         "assist": false,
         "crashed": false,
         "landings": 0,
         "attitude": [
-          0.22175531423890985,
-          0.11333757305488652,
-          0.4476408522631099
+          0.21024068032234416,
+          0.10765409854444066,
+          0.45084594223791635
         ],
         "wheels": [
           {
@@ -351,13 +387,13 @@
       },
       "camera": "chase",
       "cameraPosition": [
-        0.5111553877764693,
-        20.161343315655316,
-        16.177310560483235
+        0.47290344030969694,
+        20.017460811906567,
+        16.1800729795062
       ],
       "cameraTarget": [
-        -2,
-        0.75,
+        1.7,
+        0.9,
         8
       ],
       "transition": false,
@@ -365,15 +401,15 @@
       "events": [
         {
           "message": "道路模式 · W 加速，A / D 轉向",
-          "time": 7240.099999964237
+          "time": 8435.5
         },
         {
           "message": "車輛已重置 · 能量充滿",
-          "time": 10385.199999988079
+          "time": 11543.900000035763
         },
         {
           "message": "Rocket 系統就緒 · 按住空白鍵起飛",
-          "time": 13534.799999952316
+          "time": 14703.100000023842
         }
       ],
       "asset": {
@@ -388,18 +424,30 @@
         ],
         "quality": "desktop"
       },
+      "graphics": {
+        "hdr": "CC0 Kloppenheim 06",
+        "localReflections": true,
+        "waterReflection": true,
+        "wetPadReflection": true,
+        "cubeUpdates": 32,
+        "planarUpdates": 198,
+        "reflectionSize": 512,
+        "quality": "high",
+        "postPasses": 2,
+        "reflectionMaterials": 11
+      },
       "renderer": {
-        "calls": 107,
-        "triangles": 1016285,
-        "geometries": 74,
-        "textures": 18,
+        "calls": 138,
+        "triangles": 1270256,
+        "geometries": 91,
+        "textures": 45,
         "dpr": 1,
         "fps": 75,
         "shadowMap": 2048
       },
       "physics": {
         "bodies": 1,
-        "colliders": 88,
+        "colliders": 317,
         "fixedStep": 0.016666666666666666
       },
       "audio": {
@@ -410,79 +458,79 @@
       "vehicle": {
         "mode": "drive",
         "position": [
-          2.2108158359568364e-10,
-          0.7011085748672485,
+          -1.9196437842095015e-11,
+          0.7048441171646118,
           8
         ],
         "velocity": [
-          -1.6663713464648566e-10,
-          -0.2161303609609604,
-          -1.190841453224678e-10
+          1.3299955581302925e-9,
+          -0.003045095829293132,
+          -1.1287344670041222e-10
         ],
-        "speed": 0.7780692994594575,
-        "altitude": 0.05110857486724851,
-        "energy": 45.0516666666686,
+        "speed": 0.010962344985456328,
+        "altitude": 0.054844117164611794,
+        "energy": 47.44333333333534,
         "grounded": true,
         "assist": false,
         "crashed": false,
         "landings": 1,
         "attitude": [
-          4.758597710650298e-10,
-          0.08837993755108087,
-          -2.6841277900071896e-10
+          3.117832276186453e-10,
+          0.0846647315600697,
+          2.8895122322052264e-11
         ],
         "wheels": [
           {
             "contact": true,
-            "suspension": 0.28369492292404175
+            "suspension": 0.2846584916114807
           },
           {
             "contact": true,
-            "suspension": 0.28369492292404175
+            "suspension": 0.2846584916114807
           },
           {
             "contact": true,
-            "suspension": 0.28369492292404175
+            "suspension": 0.2846584916114807
           },
           {
             "contact": true,
-            "suspension": 0.28369492292404175
+            "suspension": 0.2846584916114807
           }
         ]
       },
       "camera": "chase",
       "cameraPosition": [
-        0.7148597706488543,
-        3.430503383070941,
-        16.167995685533587
+        0.6894458939063621,
+        3.4289164773362475,
+        16.17062827253016
       ],
       "cameraTarget": [
-        -0.000008346934575298448,
-        17.876154898086604,
-        7.999943259880606
+        1.7,
+        0.9,
+        8
       ],
       "transition": false,
       "paused": false,
       "events": [
         {
           "message": "道路模式 · W 加速，A / D 轉向",
-          "time": 7240.099999964237
+          "time": 8435.5
         },
         {
           "message": "車輛已重置 · 能量充滿",
-          "time": 10385.199999988079
+          "time": 11543.900000035763
         },
         {
           "message": "Rocket 系統就緒 · 按住空白鍵起飛",
-          "time": 13534.799999952316
+          "time": 14703.100000023842
         },
         {
           "message": "降落輔助 · 制動、回正並緩慢下降",
-          "time": 22740.099999964237
+          "time": 22646.900000035763
         },
         {
           "message": "精準降落完成 · 停機區已確認",
-          "time": 30956.799999952316
+          "time": 30531.900000035763
         }
       ],
       "asset": {
@@ -497,18 +545,30 @@
         ],
         "quality": "desktop"
       },
+      "graphics": {
+        "hdr": "CC0 Kloppenheim 06",
+        "localReflections": true,
+        "waterReflection": true,
+        "wetPadReflection": true,
+        "cubeUpdates": 63,
+        "planarUpdates": 342,
+        "reflectionSize": 512,
+        "quality": "high",
+        "postPasses": 2,
+        "reflectionMaterials": 11
+      },
       "renderer": {
-        "calls": 107,
-        "triangles": 1016285,
-        "geometries": 74,
-        "textures": 18,
+        "calls": 222,
+        "triangles": 2019711,
+        "geometries": 91,
+        "textures": 45,
         "dpr": 1,
-        "fps": 59,
+        "fps": 75,
         "shadowMap": 2048
       },
       "physics": {
         "bodies": 1,
-        "colliders": 88,
+        "colliders": 317,
         "fixedStep": 0.016666666666666666
       },
       "audio": {
@@ -519,87 +579,87 @@
       "vehicle": {
         "mode": "drive",
         "position": [
-          8.905126636093996e-10,
-          0.7060447931289673,
+          -1.0228148328295106e-9,
+          0.7060420513153076,
           8
         ],
         "velocity": [
-          1.5731328462109673e-9,
-          -0.0031415345147252083,
-          1.7733374491069043e-10
+          -8.088804626105173e-11,
+          -0.003114382503554225,
+          -3.852549668170724e-10
         ],
-        "speed": 0.011309524253012187,
-        "altitude": 0.05604479312896726,
-        "energy": 35.488333333335866,
+        "speed": 0.0112117770127953,
+        "altitude": 0.056042051315307595,
+        "energy": 28.88000000000247,
         "grounded": true,
         "assist": false,
         "crashed": false,
         "landings": 2,
         "attitude": [
-          -1.945286801474841e-10,
-          0.08837993755108087,
-          -2.2284978576214518e-10
+          -1.7749376982564565e-10,
+          0.0846647315600697,
+          -1.2578710374693952e-10
         ],
         "wheels": [
           {
             "contact": true,
-            "suspension": 0.28587907552719116
+            "suspension": 0.2858758568763733
           },
           {
             "contact": true,
-            "suspension": 0.28587907552719116
+            "suspension": 0.2858758568763733
           },
           {
             "contact": true,
-            "suspension": 0.28587907552719116
+            "suspension": 0.2858758568763733
           },
           {
             "contact": true,
-            "suspension": 0.28587907552719116
+            "suspension": 0.2858758568763733
           }
         ]
       },
       "camera": "chase",
       "cameraPosition": [
-        0.7265404406242049,
-        3.4184130576669842,
-        16.167995685533587
+        0.6954173035087752,
+        3.420053370603573,
+        16.17062827253016
       ],
       "cameraTarget": [
-        -0.000008346934575298448,
-        17.876154898086604,
-        7.999943259880606
+        1.7,
+        0.9,
+        8
       ],
       "transition": false,
       "paused": false,
       "events": [
         {
           "message": "道路模式 · W 加速，A / D 轉向",
-          "time": 7240.099999964237
+          "time": 8435.5
         },
         {
           "message": "車輛已重置 · 能量充滿",
-          "time": 10385.199999988079
+          "time": 11543.900000035763
         },
         {
           "message": "Rocket 系統就緒 · 按住空白鍵起飛",
-          "time": 13534.799999952316
+          "time": 14703.100000023842
         },
         {
           "message": "降落輔助 · 制動、回正並緩慢下降",
-          "time": 22740.099999964237
+          "time": 22646.900000035763
         },
         {
           "message": "精準降落完成 · 停機區已確認",
-          "time": 30956.799999952316
+          "time": 30531.900000035763
         },
         {
           "message": "Rocket 系統就緒 · 按住空白鍵起飛",
-          "time": 32344.099999964237
+          "time": 30929.19999998808
         },
         {
           "message": "精準降落完成 · 停機區已確認",
-          "time": 38627.19999998808
+          "time": 36381.30000001192
         }
       ],
       "asset": {
@@ -614,18 +674,30 @@
         ],
         "quality": "desktop"
       },
+      "graphics": {
+        "hdr": "CC0 Kloppenheim 06",
+        "localReflections": true,
+        "waterReflection": true,
+        "wetPadReflection": true,
+        "cubeUpdates": 79,
+        "planarUpdates": 437,
+        "reflectionSize": 512,
+        "quality": "high",
+        "postPasses": 2,
+        "reflectionMaterials": 11
+      },
       "renderer": {
-        "calls": 107,
-        "triangles": 1016285,
-        "geometries": 74,
-        "textures": 18,
+        "calls": 222,
+        "triangles": 2019711,
+        "geometries": 91,
+        "textures": 45,
         "dpr": 1,
-        "fps": 35,
+        "fps": 75,
         "shadowMap": 2048
       },
       "physics": {
         "bodies": 1,
-        "colliders": 88,
+        "colliders": 317,
         "fixedStep": 0.016666666666666666
       },
       "audio": {
@@ -680,13 +752,13 @@
       },
       "camera": "chase",
       "cameraPosition": [
-        4.6671541850654904e-7,
-        3.3577316445961114,
-        7.048763018409346
+        -0.0000010030682769422692,
+        4.457731563391152,
+        11.458967765868175
       ],
       "cameraTarget": [
-        -2,
-        0.75,
+        1.7,
+        0.9,
         8
       ],
       "transition": false,
@@ -694,7 +766,7 @@
       "events": [
         {
           "message": "道路模式 · W 加速，A / D 轉向",
-          "time": 3723.100000023842
+          "time": 7185.099999964237
         }
       ],
       "asset": {
@@ -709,18 +781,30 @@
         ],
         "quality": "mobile"
       },
+      "graphics": {
+        "hdr": "CC0 Kloppenheim 06",
+        "localReflections": false,
+        "waterReflection": true,
+        "wetPadReflection": false,
+        "cubeUpdates": 0,
+        "planarUpdates": 12,
+        "reflectionSize": 256,
+        "quality": "balanced",
+        "postPasses": 0,
+        "reflectionMaterials": 11
+      },
       "renderer": {
-        "calls": 107,
-        "triangles": 555890,
-        "geometries": 74,
-        "textures": 18,
+        "calls": 112,
+        "triangles": 645457,
+        "geometries": 89,
+        "textures": 29,
         "dpr": 1,
         "fps": 75,
         "shadowMap": 1024
       },
       "physics": {
         "bodies": 1,
-        "colliders": 88,
+        "colliders": 317,
         "fixedStep": 0.016666666666666666
       },
       "audio": {
@@ -732,16 +816,16 @@
         "mode": "flight",
         "position": [
           0,
-          12.610318183898926,
+          12.603055000305176,
           8
         ],
         "velocity": [
           0,
-          8.728825569152832,
+          8.728816032409668,
           0
         ],
-        "speed": 31.423772048950195,
-        "altitude": 11.960318183898925,
+        "speed": 31.423737716674804,
+        "altitude": 11.953055000305175,
         "energy": 92.81666666666611,
         "grounded": false,
         "assist": false,
@@ -773,13 +857,13 @@
       },
       "camera": "chase",
       "cameraPosition": [
-        -0.0020948223330465978,
-        13.67955406617316,
-        16.19816649354489
+        -0.006612241921237112,
+        14.678015769558339,
+        20.498176633345317
       ],
       "cameraTarget": [
-        -2,
-        0.75,
+        1.7,
+        0.9,
         8
       ],
       "transition": false,
@@ -787,15 +871,15 @@
       "events": [
         {
           "message": "道路模式 · W 加速，A / D 轉向",
-          "time": 3723.100000023842
+          "time": 7185.099999964237
         },
         {
           "message": "車輛已重置 · 按 W 出發",
-          "time": 5662.699999988079
+          "time": 9113.099999964237
         },
         {
           "message": "Rocket 系統就緒 · 按住空白鍵起飛",
-          "time": 5715.899999976158
+          "time": 9164
         }
       ],
       "asset": {
@@ -810,18 +894,30 @@
         ],
         "quality": "mobile"
       },
+      "graphics": {
+        "hdr": "CC0 Kloppenheim 06",
+        "localReflections": false,
+        "waterReflection": true,
+        "wetPadReflection": false,
+        "cubeUpdates": 0,
+        "planarUpdates": 17,
+        "reflectionSize": 256,
+        "quality": "balanced",
+        "postPasses": 0,
+        "reflectionMaterials": 11
+      },
       "renderer": {
-        "calls": 107,
-        "triangles": 555890,
-        "geometries": 74,
-        "textures": 18,
+        "calls": 116,
+        "triangles": 645723,
+        "geometries": 90,
+        "textures": 29,
         "dpr": 1,
         "fps": 75,
         "shadowMap": 1024
       },
       "physics": {
         "bodies": 1,
-        "colliders": 88,
+        "colliders": 317,
         "fixedStep": 0.016666666666666666
       },
       "audio": {
@@ -833,17 +929,17 @@
         "mode": "drive",
         "position": [
           0,
-          0.7049042582511902,
+          0.7048121690750122,
           8
         ],
         "velocity": [
           0,
-          -0.00362035003490746,
+          -0.002745149191468954,
           0
         ],
-        "speed": 0.013033260125666857,
-        "altitude": 0.05490425825119016,
-        "energy": 69.81666666666867,
+        "speed": 0.009882537089288235,
+        "altitude": 0.054812169075012185,
+        "energy": 69.870000000002,
         "grounded": true,
         "assist": false,
         "crashed": false,
@@ -856,31 +952,31 @@
         "wheels": [
           {
             "contact": true,
-            "suspension": 0.284728467464447
+            "suspension": 0.2846214175224304
           },
           {
             "contact": true,
-            "suspension": 0.284728467464447
+            "suspension": 0.2846214175224304
           },
           {
             "contact": true,
-            "suspension": 0.284728467464447
+            "suspension": 0.2846214175224304
           },
           {
             "contact": true,
-            "suspension": 0.284728467464447
+            "suspension": 0.2846214175224304
           }
         ]
       },
       "camera": "chase",
       "cameraPosition": [
-        0.0019343138608956668,
-        3.427474625285166,
-        16.199999999999978
+        -0.004962808347038946,
+        4.521915850092104,
+        20.499999999999975
       ],
       "cameraTarget": [
-        -2,
-        0.75,
+        1.7,
+        0.9,
         8
       ],
       "transition": false,
@@ -888,23 +984,23 @@
       "events": [
         {
           "message": "道路模式 · W 加速，A / D 轉向",
-          "time": 3723.100000023842
+          "time": 7185.099999964237
         },
         {
           "message": "車輛已重置 · 按 W 出發",
-          "time": 5662.699999988079
+          "time": 9113.099999964237
         },
         {
           "message": "Rocket 系統就緒 · 按住空白鍵起飛",
-          "time": 5715.899999976158
+          "time": 9164
         },
         {
           "message": "降落輔助 · 制動、回正並緩慢下降",
-          "time": 7563.800000011921
+          "time": 11012.099999964237
         },
         {
           "message": "精準降落完成 · 停機區已確認",
-          "time": 14647
+          "time": 18081.899999976158
         }
       ],
       "asset": {
@@ -919,18 +1015,30 @@
         ],
         "quality": "mobile"
       },
+      "graphics": {
+        "hdr": "CC0 Kloppenheim 06",
+        "localReflections": false,
+        "waterReflection": true,
+        "wetPadReflection": false,
+        "cubeUpdates": 0,
+        "planarUpdates": 39,
+        "reflectionSize": 256,
+        "quality": "balanced",
+        "postPasses": 0,
+        "reflectionMaterials": 11
+      },
       "renderer": {
-        "calls": 107,
-        "triangles": 555890,
-        "geometries": 74,
-        "textures": 18,
+        "calls": 117,
+        "triangles": 645725,
+        "geometries": 90,
+        "textures": 29,
         "dpr": 1,
         "fps": 75,
         "shadowMap": 1024
       },
       "physics": {
         "bodies": 1,
-        "colliders": 88,
+        "colliders": 317,
         "fixedStep": 0.016666666666666666
       },
       "audio": {

@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import RAPIER from '@dimforge/rapier3d-compat';
+import { applyCoastalPbr, addCoastalDetails, addDistantHeadlands } from './world-detail';
 
 /** Coastal test range. All dimensions and collision proxies are in metres. */
 export function createWorld(scene: THREE.Scene, physics: RAPIER.World) {
@@ -57,57 +58,14 @@ export function createWorld(scene: THREE.Scene, physics: RAPIER.World) {
     signal: new THREE.MeshStandardMaterial({ color: 0x92c9d2, emissive: 0x66cadd, emissiveIntensity: 0.7, roughness: 0.5 }),
     beacon: new THREE.MeshStandardMaterial({ color: 0xf1b764, emissive: 0xec9e42, emissiveIntensity: 1.2, roughness: 0.4 }),
   };
+  materials.glass.color.set(0x526e78);materials.glass.roughness=.14;materials.glass.metalness=.88;materials.glass.envMapIntensity=1.25;
+  materials.glassLight.color.set(0x69818a);materials.glassLight.roughness=.18;materials.glassLight.envMapIntensity=1.15;
+  materials.glassWarm.color.set(0x747d78);materials.glassWarm.roughness=.2;
 
-  function surfaceTexture(material: THREE.MeshStandardMaterial, paving: boolean) {
-    // Browser-only canvas assets; the deterministic physics smoke check needs no DOM.
-    if (typeof document === 'undefined') return;
-    const canvas = document.createElement('canvas');
-    canvas.width = canvas.height = 256;
-    const context = canvas.getContext('2d');
-    if (!context) return;
-    const image = context.createImageData(256, 256);
-    let grainSeed = paving ? 1701 : 293;
-    for (let i = 0; i < image.data.length; i += 4) {
-      grainSeed = (grainSeed * 1664525 + 1013904223) >>> 0;
-      const grain = grainSeed / 4294967296;
-      const value = (paving ? 231 : 220) + (grain - 0.5) * (paving ? 12 : 32);
-      image.data[i] = image.data[i + 1] = image.data[i + 2] = value;
-      image.data[i + 3] = 255;
-    }
-    context.putImageData(image, 0, 0);
-    if (paving) {
-      context.strokeStyle = '#a5a5a5';
-      context.lineWidth = 1.4;
-      context.strokeRect(0, 0, 256, 256);
-      context.strokeStyle = '#d5d5d5';
-      context.lineWidth = 0.6;
-      context.beginPath(); context.moveTo(42, 0); context.lineTo(41, 65); context.lineTo(37, 82); context.stroke();
-    }
-    const map = new THREE.CanvasTexture(canvas);
-    map.colorSpace = THREE.SRGBColorSpace;
-    map.wrapS = map.wrapT = THREE.RepeatWrapping;
-    map.anisotropy = 4;
-    const bump = map.clone();
-    bump.colorSpace = THREE.NoColorSpace;
-    material.map = map;
-    material.bumpMap = bump;
-    material.bumpScale = paving ? 0.018 : 0.027;
-    const metres = paving ? 2.8 : 3.6;
-    material.onBeforeCompile = shader => {
-      shader.vertexShader = shader.vertexShader.replace('#include <uv_vertex>', `#include <uv_vertex>
-        vec4 surfaceWorld = vec4(position, 1.0);
-        #ifdef USE_INSTANCING
-          surfaceWorld = instanceMatrix * surfaceWorld;
-        #endif
-        surfaceWorld = modelMatrix * surfaceWorld;
-        vMapUv = surfaceWorld.xz / ${metres.toFixed(1)};
-        vBumpMapUv = vMapUv;
-      `);
-    };
-    material.customProgramCacheKey = () => `coastal-world-surface-${metres}`;
-  }
-  surfaceTexture(materials.road, false);
-  surfaceTexture(materials.paving, true);
+  materials.road.color.set(0xa6adb0);materials.road.roughness=.84;
+  materials.paving.color.set(0xd2cfc5);materials.paving.roughness=.82;
+  applyCoastalPbr(materials.road,'asphalt_02',5.5,.38);
+  applyCoastalPbr(materials.paving,'concrete_pavement',3.2,.32);
 
   // The ocean deliberately has no ground collider. Land top and every pad top are y=0.
   collider(280, -1, 0, 630, 2, 1600);
@@ -147,7 +105,7 @@ export function createWorld(scene: THREE.Scene, physics: RAPIER.World) {
   const padGeometry = new THREE.CircleGeometry(13.5, 80);
   const ringGeometry = new THREE.RingGeometry(11.2, 11.45, 80);
   const padMaterial = materials.road.clone();
-  padMaterial.color.setHex(0x39484d);
+  padMaterial.color.setHex(0x7a878c);
   padMaterial.onBeforeCompile = materials.road.onBeforeCompile;
   padMaterial.customProgramCacheKey = materials.road.customProgramCacheKey;
   for (let index = 0; index < landingPads.length; index++) {
@@ -187,7 +145,8 @@ export function createWorld(scene: THREE.Scene, physics: RAPIER.World) {
           const along = (column + 0.5) * span / count - span / 2;
           const faceX = side < 2 ? x + along : x + (side === 2 ? w / 2 + 0.025 : -w / 2 - 0.025);
           const faceZ = side < 2 ? z + (side === 0 ? d / 2 + 0.025 : -d / 2 - 0.025) : z + along;
-          const material = random() < 0.09 ? materials.glassWarm : random() < 0.33 ? materials.glassLight : materials.glass;
+          const variation=random();
+          const material = variation < 0.025 ? materials.glassWarm : (floor%5===0||variation<.13) ? materials.glassLight : materials.glass;
           const rotation = side === 0 ? 0 : side === 1 ? Math.PI : side === 2 ? Math.PI / 2 : -Math.PI / 2;
           instance(planeGeometry, material, faceX, y, faceZ, span / count - 0.2, 2.65, 1, rotation);
         }
@@ -336,19 +295,9 @@ export function createWorld(scene: THREE.Scene, physics: RAPIER.World) {
     }
   }
 
-  // Distant headlands: layered silhouettes, deliberately outside the driving volume.
-  const mountainGeometry = new THREE.ConeGeometry(1, 1, 7);
-  const mountainMaterials = [standard(0x7a9b9d, 1), standard(0x89a5aa, 1), standard(0x9fb5ba, 1)];
-  for (let i = 0; i < 24; i++) {
-    const z = -920 + i * 81;
-    const h = 44 + random() * 112;
-    instance(mountainGeometry, mountainMaterials[i % 3], -450 - random() * 230, h / 2 - 3, z, 86 + random() * 80, h, 85 + random() * 70, random() * 2);
-  }
-  for (let i = 0; i < 15; i++) {
-    const h = 60 + random() * 95;
-    instance(mountainGeometry, mountainMaterials[2], 420 + random() * 180, h / 2 - 2, -860 - random() * 190, 90 + random() * 95, h, 105 + random() * 50, random() * 4);
-  }
+  addDistantHeadlands(root);
 
+  addCoastalDetails({root,materials,instance,box,collider});
   for (const [name, batch] of batches) {
     const mesh = new THREE.InstancedMesh(batch.geometry, batch.material, batch.matrices.length);
     mesh.name = `Coastal kit ${name}`;

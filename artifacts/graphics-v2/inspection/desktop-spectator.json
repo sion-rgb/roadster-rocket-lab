@@ -1,0 +1,89 @@
+{
+  "url": "http://127.0.0.1:5190/?qa=1",
+  "mode": "desktop",
+  "state": "spectator",
+  "requestedState": "spectator",
+  "appliedState": "spectator",
+  "runId": "graphics-v2-20261019",
+  "seed": null,
+  "screenshotPath": "artifacts\\graphics-v2\\inspection\\desktop-spectator.png",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 2070 SUPER (0x00001E84) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)",
+    "softwareRendered": false
+  },
+  "result": {
+    "ok": true,
+    "reason": "nonblank",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 960
+    },
+    "drawingBuffer": {
+      "width": 1440,
+      "height": 960
+    },
+    "alphaPixels": 4103,
+    "variance": 233,
+    "colorBuckets": 154,
+    "metrics": {
+      "colorBuckets": 184,
+      "colorEntropyBits": 6.01,
+      "edgeDensity": 0.247,
+      "luminance": {
+        "mean": 99.8,
+        "p5": 29.7,
+        "p95": 186.3,
+        "contrast": 156.6
+      },
+      "dominantColorShare": 0.051,
+      "nonBackgroundShare": 0.949
+    },
+    "renderBudget": {
+      "tier": "desktop",
+      "note": "starting-point budget; adjust per game and document overrides",
+      "rows": [
+        {
+          "metric": "calls",
+          "actual": 138,
+          "limit": 300,
+          "ok": true
+        },
+        {
+          "metric": "triangles",
+          "actual": 1270256,
+          "limit": 750000,
+          "ok": false
+        },
+        {
+          "metric": "geometries",
+          "actual": 91,
+          "limit": 300,
+          "ok": true
+        },
+        {
+          "metric": "textures",
+          "actual": 45,
+          "limit": 60,
+          "ok": true
+        }
+      ],
+      "withinBudget": false
+    },
+    "diagnostics": {
+      "renderer": {
+        "calls": 138,
+        "triangles": 1270256,
+        "geometries": 91,
+        "textures": 45,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 2048
+      }
+    }
+  },
+  "consoleErrors": [],
+  "pageErrors": []
+}
