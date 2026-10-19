@@ -2,6 +2,8 @@
 
 2026-10-19，非官方概念模擬器。保留原本三模式、三視角、Rapier 操作及模擬參數聲明。
 
+已發布至 [GitHub Pages v1.1](https://sion-rgb.github.io/roadster-rocket-lab/?v=1.1.0)。應用程式碼 commit `a737b0a73493102c0d3dd16807cdf84745e037fb` 的 [Actions測試 / 建置 / 部署](https://github.com/sion-rgb/roadster-rocket-lab/actions/runs/39223069381)成功。部署後以Chrome確認新版HDR / PBR及反射載入、W駕駛、起飛、三視角及輔助降落，9項線上檢查通過，JS / HTTP / WebGL錯誤為0。[公開站點記錄](public-live.json) / [截圖](public-live.png)。
+
 ![v1.1](after/desktop-showcase.png)
 
 ## 這次實際改動
@@ -43,6 +45,8 @@
 - [專用畫質驗證](verification.json)通過：11個HDR / PBR檔案SHA-256一致；桌面 / 手機的展示及飛行4種場景均載入授權GLB、HDR、正確反射分級；WebGL錯誤為0。
 - 5個當次 canvas inspector狀態均非空、無JS / shader錯誤，capture manifest檢查通過9項必要報告與檔案。[清單](evidence.json)。
 - 初次反射曾在陰影depth map未初始化時綁定錯誤的shadow sampler。已在第一個反射pass前建立真正陰影圖；修正後`gl.getError()`為0。沒有把只檢查console的結果當作GPU成功。
+
+早期含GPU警告的 [中間版本記錄](iteration-before-shadow-init.json)明確保留作歷史；`verification.json`及`after/report.json`是修正後結果。
 - [新操作錄影](../motion/desktop-playthrough.webm)包含新版實際駕駛、鏡頭及起降。
 
 重現：先執行`npm run preview -- --port 5188`，另開終端執行`npm run test:browser`及`npm run test:graphics`。`SIM_URL`可指定其他本地 / 線上網址。`npm run test:visual -- before` / `after`會生成對照截圖；應先保留要比較的舊build再擷取before。

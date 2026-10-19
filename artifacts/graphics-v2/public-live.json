@@ -1,0 +1,149 @@
+{
+  "date": "2026-10-19T08:31:07.667Z",
+  "url": "https://sion-rgb.github.io/roadster-rocket-lab/",
+  "httpStatus": 200,
+  "checks": [
+    "v1.1 HDR and PBR public assets load",
+    "live local reflections active",
+    "public Pages assets and Draco load",
+    "W drive",
+    "launch button takeoff",
+    "three cameras",
+    "assisted landing",
+    "partial Gamepad data stays finite",
+    "normal entry has no QA hooks"
+  ],
+  "snapshot": {
+    "vehicle": {
+      "mode": "drive",
+      "position": [
+        0,
+        0.7044029235839844,
+        8
+      ],
+      "velocity": [
+        0,
+        0.0009655450703576207,
+        0
+      ],
+      "speed": 0.003475962253287435,
+      "altitude": 0.05440292358398435,
+      "energy": 53.18833333333554,
+      "grounded": true,
+      "assist": false,
+      "crashed": false,
+      "landings": 1,
+      "attitude": [
+        0,
+        0,
+        0
+      ],
+      "wheels": [
+        {
+          "contact": true,
+          "suspension": 0.284148633480072
+        },
+        {
+          "contact": true,
+          "suspension": 0.284148633480072
+        },
+        {
+          "contact": true,
+          "suspension": 0.284148633480072
+        },
+        {
+          "contact": true,
+          "suspension": 0.284148633480072
+        }
+      ]
+    },
+    "camera": "spectator",
+    "cameraPosition": [
+      47.59795641211546,
+      44.51799533071363,
+      56.39861688743822
+    ],
+    "cameraTarget": [
+      -9.035115322693554e-14,
+      16.9180206298828,
+      7.999999999997922
+    ],
+    "transition": false,
+    "paused": false,
+    "events": [
+      {
+        "message": "道路模式 · W 加速，A / D 轉向",
+        "time": 13904.900000035763
+      },
+      {
+        "message": "車輛已重置 · 能量充滿",
+        "time": 14929.900000035763
+      },
+      {
+        "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+        "time": 14987.900000035763
+      },
+      {
+        "message": "垂直起飛 · 推進器運作中",
+        "time": 14988.400000035763
+      },
+      {
+        "message": "降落輔助 · 制動、回正並緩慢下降",
+        "time": 21401.100000023842
+      },
+      {
+        "message": "精準降落完成 · 停機區已確認",
+        "time": 29039.600000023842
+      }
+    ],
+    "asset": {
+      "source": "licensed-glb",
+      "triangles": 608769,
+      "meshes": 46,
+      "materials": 26,
+      "dimensions": [
+        2,
+        1.15,
+        4.5
+      ],
+      "quality": "desktop"
+    },
+    "graphics": {
+      "hdr": "CC0 Kloppenheim 06",
+      "localReflections": true,
+      "waterReflection": true,
+      "wetPadReflection": true,
+      "cubeUpdates": 43,
+      "planarUpdates": 214,
+      "reflectionSize": 512,
+      "quality": "high",
+      "postPasses": 2,
+      "frames": 1233,
+      "meanCalls": 161.0364963503651,
+      "peakCalls": 669,
+      "meanTriangles": 1457742.493917276,
+      "peakTriangles": 5264732,
+      "reflectionMaterials": 11
+    },
+    "renderer": {
+      "calls": 139,
+      "triangles": 1270320,
+      "geometries": 91,
+      "textures": 45,
+      "dpr": 1,
+      "fps": 75,
+      "shadowMap": 2048
+    },
+    "physics": {
+      "bodies": 1,
+      "colliders": 317,
+      "fixedStep": 0.016666666666666666
+    },
+    "audio": {
+      "enabled": false
+    }
+  },
+  "errors": [],
+  "failed": [],
+  "status": "PASS"
+}
