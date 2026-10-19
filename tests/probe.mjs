@@ -1,0 +1,17 @@
+import {chromium} from '@playwright/test';
+import {mkdir,writeFile} from 'node:fs/promises';
+await mkdir('artifacts/captures',{recursive:true});
+const browser=await chromium.launch({channel:'chrome',headless:true,args:['--enable-webgl','--ignore-gpu-blocklist']});
+const page=await browser.newPage({viewport:{width:1440,height:960}});const errors=[];
+page.on('pageerror',e=>errors.push(String(e)));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+await page.goto('http://127.0.0.1:5188/?qa=1');await page.waitForFunction(()=>window.__ROADSTER__,{timeout:60000});await page.waitForTimeout(2000);
+await page.screenshot({path:'artifacts/captures/01-showcase.png'});
+const result={initial:await page.evaluate(()=>window.__ROADSTER__.snapshot()),errors};
+await page.getByRole('button',{name:'進入駕駛席'}).click();await page.keyboard.down('KeyW');await page.waitForTimeout(3000);await page.keyboard.up('KeyW');
+result.drive=await page.evaluate(()=>window.__ROADSTER__.snapshot());await page.screenshot({path:'artifacts/captures/02-drive.png'});
+await page.keyboard.press('KeyR');await page.keyboard.press('KeyF');await page.keyboard.down('Space');await page.waitForTimeout(3000);await page.keyboard.up('Space');
+result.flight=await page.evaluate(()=>window.__ROADSTER__.snapshot());await page.screenshot({path:'artifacts/captures/03-flight.png'});
+await page.keyboard.press('Digit1');await page.waitForTimeout(1500);await page.screenshot({path:'artifacts/captures/04-cockpit.png'});result.cockpit=await page.evaluate(()=>window.__ROADSTER__.snapshot());
+await page.keyboard.press('Digit3');await page.waitForTimeout(1500);await page.screenshot({path:'artifacts/captures/05-spectator.png'});
+await page.keyboard.press('KeyL');await page.waitForTimeout(13000);result.landing=await page.evaluate(()=>window.__ROADSTER__.snapshot());await page.screenshot({path:'artifacts/captures/06-landing.png'});
+await writeFile('artifacts/probe.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));await browser.close();

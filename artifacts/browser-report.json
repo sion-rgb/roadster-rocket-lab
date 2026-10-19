@@ -1,0 +1,994 @@
+{
+  "date": "2026-10-19T01:50:43.490Z",
+  "url": "http://127.0.0.1:5188/",
+  "checks": [
+    "licensed GLB loads",
+    "real W input accelerates forward",
+    "real steering changes trajectory",
+    "cockpit and GSAP transition",
+    "chase camera follows behind",
+    "real Space takeoff, altitude and energy",
+    "real pitch and roll input",
+    "free spectator mouse orbit and zoom",
+    "assisted landing after pitch and roll",
+    "manual Ctrl descent and touchdown",
+    "Web Audio gesture unlock and mute",
+    "pause freezes physics, resume, reset",
+    "instruction panel opens and closes",
+    "mobile real touch hold accelerates",
+    "mobile touch takeoff and release",
+    "mobile touch assisted landing",
+    "mobile HUD and touch controls stay inside viewport"
+  ],
+  "errors": [],
+  "networkErrors": [],
+  "desktop": {
+    "showcase": {
+      "vehicle": {
+        "mode": "showcase",
+        "position": [
+          0,
+          0.6578421592712402,
+          8
+        ],
+        "velocity": [
+          0,
+          -0.06120985746383667,
+          0
+        ],
+        "speed": 0.22035548686981202,
+        "altitude": 0.007842159271240212,
+        "energy": 100,
+        "grounded": true,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          },
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          },
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          },
+          {
+            "contact": true,
+            "suspension": 0.2378421425819397
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        5.451907502807905,
+        3.9500000000000077,
+        15.580836007301292
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": false,
+      "events": [],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 608769,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "desktop"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 1016285,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 66,
+        "shadowMap": 2048
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    },
+    "driving": {
+      "vehicle": {
+        "mode": "drive",
+        "position": [
+          0,
+          0.6577315926551819,
+          -9.06948471069336
+        ],
+        "velocity": [
+          0,
+          -0.06121229752898216,
+          -16.221799850463867
+        ],
+        "speed": 58.398895227966975,
+        "altitude": 0.0077315926551818626,
+        "energy": 100,
+        "grounded": true,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0.019421569102282238,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": true,
+            "suspension": 0.2660204768180847
+          },
+          {
+            "contact": true,
+            "suspension": 0.2660204768180847
+          },
+          {
+            "contact": true,
+            "suspension": 0.2096908688545227
+          },
+          {
+            "contact": true,
+            "suspension": 0.2096908688545227
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        7.033267157677337e-8,
+        3.35773160052441,
+        1.9957953953265073
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": false,
+      "events": [
+        {
+          "message": "道路模式 · W 加速，A / D 轉向",
+          "time": 7240.099999964237
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 608769,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "desktop"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 1016285,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 2048
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    },
+    "takeoff": {
+      "vehicle": {
+        "mode": "flight",
+        "position": [
+          0,
+          17.10877799987793,
+          8
+        ],
+        "velocity": [
+          0,
+          1.3704872131347656,
+          0
+        ],
+        "speed": 4.933753967285156,
+        "altitude": 16.45877799987793,
+        "energy": 90.15833333333283,
+        "grounded": false,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        0.004457011980729744,
+        19.180145906205716,
+        16.199999999934334
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": false,
+      "events": [
+        {
+          "message": "道路模式 · W 加速，A / D 轉向",
+          "time": 7240.099999964237
+        },
+        {
+          "message": "車輛已重置 · 能量充滿",
+          "time": 10385.199999988079
+        },
+        {
+          "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+          "time": 13534.799999952316
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 608769,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "desktop"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 1016285,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 2048
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    },
+    "attitude": {
+      "vehicle": {
+        "mode": "flight",
+        "position": [
+          0,
+          17.471887588500977,
+          8
+        ],
+        "velocity": [
+          0,
+          0.016047345474362373,
+          0
+        ],
+        "speed": 0.057770443707704545,
+        "altitude": 16.821887588500978,
+        "energy": 86.31833333333326,
+        "grounded": false,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0.22175531423890985,
+          0.11333757305488652,
+          0.4476408522631099
+        ],
+        "wheels": [
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        0.5111553877764693,
+        20.161343315655316,
+        16.177310560483235
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": false,
+      "events": [
+        {
+          "message": "道路模式 · W 加速，A / D 轉向",
+          "time": 7240.099999964237
+        },
+        {
+          "message": "車輛已重置 · 能量充滿",
+          "time": 10385.199999988079
+        },
+        {
+          "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+          "time": 13534.799999952316
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 608769,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "desktop"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 1016285,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 2048
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    },
+    "landing": {
+      "vehicle": {
+        "mode": "drive",
+        "position": [
+          2.2108158359568364e-10,
+          0.7011085748672485,
+          8
+        ],
+        "velocity": [
+          -1.6663713464648566e-10,
+          -0.2161303609609604,
+          -1.190841453224678e-10
+        ],
+        "speed": 0.7780692994594575,
+        "altitude": 0.05110857486724851,
+        "energy": 45.0516666666686,
+        "grounded": true,
+        "assist": false,
+        "crashed": false,
+        "landings": 1,
+        "attitude": [
+          4.758597710650298e-10,
+          0.08837993755108087,
+          -2.6841277900071896e-10
+        ],
+        "wheels": [
+          {
+            "contact": true,
+            "suspension": 0.28369492292404175
+          },
+          {
+            "contact": true,
+            "suspension": 0.28369492292404175
+          },
+          {
+            "contact": true,
+            "suspension": 0.28369492292404175
+          },
+          {
+            "contact": true,
+            "suspension": 0.28369492292404175
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        0.7148597706488543,
+        3.430503383070941,
+        16.167995685533587
+      ],
+      "cameraTarget": [
+        -0.000008346934575298448,
+        17.876154898086604,
+        7.999943259880606
+      ],
+      "transition": false,
+      "paused": false,
+      "events": [
+        {
+          "message": "道路模式 · W 加速，A / D 轉向",
+          "time": 7240.099999964237
+        },
+        {
+          "message": "車輛已重置 · 能量充滿",
+          "time": 10385.199999988079
+        },
+        {
+          "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+          "time": 13534.799999952316
+        },
+        {
+          "message": "降落輔助 · 制動、回正並緩慢下降",
+          "time": 22740.099999964237
+        },
+        {
+          "message": "精準降落完成 · 停機區已確認",
+          "time": 30956.799999952316
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 608769,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "desktop"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 1016285,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 59,
+        "shadowMap": 2048
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    },
+    "manualLanding": {
+      "vehicle": {
+        "mode": "drive",
+        "position": [
+          8.905126636093996e-10,
+          0.7060447931289673,
+          8
+        ],
+        "velocity": [
+          1.5731328462109673e-9,
+          -0.0031415345147252083,
+          1.7733374491069043e-10
+        ],
+        "speed": 0.011309524253012187,
+        "altitude": 0.05604479312896726,
+        "energy": 35.488333333335866,
+        "grounded": true,
+        "assist": false,
+        "crashed": false,
+        "landings": 2,
+        "attitude": [
+          -1.945286801474841e-10,
+          0.08837993755108087,
+          -2.2284978576214518e-10
+        ],
+        "wheels": [
+          {
+            "contact": true,
+            "suspension": 0.28587907552719116
+          },
+          {
+            "contact": true,
+            "suspension": 0.28587907552719116
+          },
+          {
+            "contact": true,
+            "suspension": 0.28587907552719116
+          },
+          {
+            "contact": true,
+            "suspension": 0.28587907552719116
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        0.7265404406242049,
+        3.4184130576669842,
+        16.167995685533587
+      ],
+      "cameraTarget": [
+        -0.000008346934575298448,
+        17.876154898086604,
+        7.999943259880606
+      ],
+      "transition": false,
+      "paused": false,
+      "events": [
+        {
+          "message": "道路模式 · W 加速，A / D 轉向",
+          "time": 7240.099999964237
+        },
+        {
+          "message": "車輛已重置 · 能量充滿",
+          "time": 10385.199999988079
+        },
+        {
+          "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+          "time": 13534.799999952316
+        },
+        {
+          "message": "降落輔助 · 制動、回正並緩慢下降",
+          "time": 22740.099999964237
+        },
+        {
+          "message": "精準降落完成 · 停機區已確認",
+          "time": 30956.799999952316
+        },
+        {
+          "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+          "time": 32344.099999964237
+        },
+        {
+          "message": "精準降落完成 · 停機區已確認",
+          "time": 38627.19999998808
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 608769,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "desktop"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 1016285,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 35,
+        "shadowMap": 2048
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    }
+  },
+  "mobile": {
+    "driving": {
+      "vehicle": {
+        "mode": "drive",
+        "position": [
+          0,
+          0.6577315926551819,
+          -3.35832142829895
+        ],
+        "velocity": [
+          0,
+          -0.061212208122015,
+          -13.384561538696289
+        ],
+        "speed": 48.18492543677661,
+        "altitude": 0.0077315926551818626,
+        "energy": 100,
+        "grounded": true,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0.019420965519843424,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": true,
+            "suspension": 0.26601940393447876
+          },
+          {
+            "contact": true,
+            "suspension": 0.26601940393447876
+          },
+          {
+            "contact": true,
+            "suspension": 0.2096918225288391
+          },
+          {
+            "contact": true,
+            "suspension": 0.2096918225288391
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        4.6671541850654904e-7,
+        3.3577316445961114,
+        7.048763018409346
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": false,
+      "events": [
+        {
+          "message": "道路模式 · W 加速，A / D 轉向",
+          "time": 3723.100000023842
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 201937,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "mobile"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 555890,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 1024
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    },
+    "flight": {
+      "vehicle": {
+        "mode": "flight",
+        "position": [
+          0,
+          12.610318183898926,
+          8
+        ],
+        "velocity": [
+          0,
+          8.728825569152832,
+          0
+        ],
+        "speed": 31.423772048950195,
+        "altitude": 11.960318183898925,
+        "energy": 92.81666666666611,
+        "grounded": false,
+        "assist": false,
+        "crashed": false,
+        "landings": 0,
+        "attitude": [
+          0,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          },
+          {
+            "contact": false,
+            "suspension": 0.30000001192092896
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        -0.0020948223330465978,
+        13.67955406617316,
+        16.19816649354489
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": false,
+      "events": [
+        {
+          "message": "道路模式 · W 加速，A / D 轉向",
+          "time": 3723.100000023842
+        },
+        {
+          "message": "車輛已重置 · 按 W 出發",
+          "time": 5662.699999988079
+        },
+        {
+          "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+          "time": 5715.899999976158
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 201937,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "mobile"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 555890,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 1024
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    },
+    "landing": {
+      "vehicle": {
+        "mode": "drive",
+        "position": [
+          0,
+          0.7049042582511902,
+          8
+        ],
+        "velocity": [
+          0,
+          -0.00362035003490746,
+          0
+        ],
+        "speed": 0.013033260125666857,
+        "altitude": 0.05490425825119016,
+        "energy": 69.81666666666867,
+        "grounded": true,
+        "assist": false,
+        "crashed": false,
+        "landings": 1,
+        "attitude": [
+          0,
+          0,
+          0
+        ],
+        "wheels": [
+          {
+            "contact": true,
+            "suspension": 0.284728467464447
+          },
+          {
+            "contact": true,
+            "suspension": 0.284728467464447
+          },
+          {
+            "contact": true,
+            "suspension": 0.284728467464447
+          },
+          {
+            "contact": true,
+            "suspension": 0.284728467464447
+          }
+        ]
+      },
+      "camera": "chase",
+      "cameraPosition": [
+        0.0019343138608956668,
+        3.427474625285166,
+        16.199999999999978
+      ],
+      "cameraTarget": [
+        -2,
+        0.75,
+        8
+      ],
+      "transition": false,
+      "paused": false,
+      "events": [
+        {
+          "message": "道路模式 · W 加速，A / D 轉向",
+          "time": 3723.100000023842
+        },
+        {
+          "message": "車輛已重置 · 按 W 出發",
+          "time": 5662.699999988079
+        },
+        {
+          "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+          "time": 5715.899999976158
+        },
+        {
+          "message": "降落輔助 · 制動、回正並緩慢下降",
+          "time": 7563.800000011921
+        },
+        {
+          "message": "精準降落完成 · 停機區已確認",
+          "time": 14647
+        }
+      ],
+      "asset": {
+        "source": "licensed-glb",
+        "triangles": 201937,
+        "meshes": 46,
+        "materials": 26,
+        "dimensions": [
+          2,
+          1.15,
+          4.5
+        ],
+        "quality": "mobile"
+      },
+      "renderer": {
+        "calls": 107,
+        "triangles": 555890,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 1024
+      },
+      "physics": {
+        "bodies": 1,
+        "colliders": 88,
+        "fixedStep": 0.016666666666666666
+      },
+      "audio": {
+        "enabled": false
+      }
+    },
+    "layout": {
+      "viewport": 390,
+      "scrollWidth": 390,
+      "controls": [
+        {
+          "label": "向左",
+          "x": 19.5,
+          "y": 454.5,
+          "width": 43,
+          "height": 43
+        },
+        {
+          "label": "加速",
+          "x": 66.5,
+          "y": 431,
+          "width": 43,
+          "height": 43
+        },
+        {
+          "label": "倒車或減速",
+          "x": 66.5,
+          "y": 478,
+          "width": 43,
+          "height": 43
+        },
+        {
+          "label": "向右",
+          "x": 113.5,
+          "y": 454.5,
+          "width": 43,
+          "height": 43
+        },
+        {
+          "label": "煞車",
+          "x": 280.5,
+          "y": 478,
+          "width": 43,
+          "height": 43
+        },
+        {
+          "label": "推進加速",
+          "x": 327.5,
+          "y": 478,
+          "width": 43,
+          "height": 43
+        }
+      ]
+    }
+  },
+  "gpu": {
+    "vendor": "Google Inc. (NVIDIA)",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 2070 SUPER (0x00001E84) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+  },
+  "status": "PASS"
+}

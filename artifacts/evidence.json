@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "runId": "final-20261019",
+  "captures": [
+    {"mode":"desktop","state":"active-driving","report":"artifacts/canvas-final/desktop-active-driving.json"},
+    {"mode":"desktop","state":"active-flight","report":"artifacts/canvas-final/desktop-active-flight.json"},
+    {"mode":"desktop","state":"cockpit","report":"artifacts/canvas-final/desktop-cockpit.json"},
+    {"mode":"desktop","state":"spectator","report":"artifacts/canvas-final/desktop-spectator.json"},
+    {"mode":"mobile","state":"active-flight","report":"artifacts/canvas-final/mobile-active-flight.json"}
+  ],
+  "artifacts": ["public/assets/car/roadster.glb","public/assets/car/roadster-mobile.glb","artifacts/motion/desktop-playthrough.webm","artifacts/browser-report.json"]
+}

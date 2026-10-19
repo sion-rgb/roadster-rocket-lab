@@ -1,0 +1,89 @@
+{
+  "url": "http://127.0.0.1:5188/?qa=1",
+  "mode": "mobile",
+  "state": "active-flight",
+  "requestedState": "active-flight",
+  "appliedState": "active-flight",
+  "runId": "final-20261019",
+  "seed": null,
+  "screenshotPath": "artifacts\\canvas-final\\mobile-active-flight.png",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 2070 SUPER (0x00001E84) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)",
+    "softwareRendered": false
+  },
+  "result": {
+    "ok": true,
+    "reason": "nonblank",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844
+    },
+    "drawingBuffer": {
+      "width": 390,
+      "height": 844
+    },
+    "alphaPixels": 4115,
+    "variance": 243,
+    "colorBuckets": 220,
+    "metrics": {
+      "colorBuckets": 314,
+      "colorEntropyBits": 6.14,
+      "edgeDensity": 0.369,
+      "luminance": {
+        "mean": 103.4,
+        "p5": 33.2,
+        "p95": 205.2,
+        "contrast": 171.9
+      },
+      "dominantColorShare": 0.068,
+      "nonBackgroundShare": 0.932
+    },
+    "renderBudget": {
+      "tier": "mobile",
+      "note": "starting-point budget; adjust per game and document overrides",
+      "rows": [
+        {
+          "metric": "calls",
+          "actual": 107,
+          "limit": 150,
+          "ok": true
+        },
+        {
+          "metric": "triangles",
+          "actual": 555890,
+          "limit": 300000,
+          "ok": false
+        },
+        {
+          "metric": "geometries",
+          "actual": 74,
+          "limit": 200,
+          "ok": true
+        },
+        {
+          "metric": "textures",
+          "actual": 18,
+          "limit": 40,
+          "ok": true
+        }
+      ],
+      "withinBudget": false
+    },
+    "diagnostics": {
+      "renderer": {
+        "calls": 107,
+        "triangles": 555890,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 1024
+      }
+    }
+  },
+  "consoleErrors": [],
+  "pageErrors": []
+}

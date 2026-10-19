@@ -1,0 +1,89 @@
+{
+  "url": "http://127.0.0.1:5188/?qa=1",
+  "mode": "desktop",
+  "state": "active-flight",
+  "requestedState": "active-flight",
+  "appliedState": "active-flight",
+  "runId": "final-20261019",
+  "seed": null,
+  "screenshotPath": "artifacts\\canvas-final\\desktop-active-flight.png",
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 2070 SUPER (0x00001E84) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "vendor": "Google Inc. (NVIDIA)",
+    "softwareRendered": false
+  },
+  "result": {
+    "ok": true,
+    "reason": "nonblank",
+    "rect": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 960
+    },
+    "drawingBuffer": {
+      "width": 1440,
+      "height": 960
+    },
+    "alphaPixels": 4103,
+    "variance": 242,
+    "colorBuckets": 196,
+    "metrics": {
+      "colorBuckets": 260,
+      "colorEntropyBits": 6.25,
+      "edgeDensity": 0.314,
+      "luminance": {
+        "mean": 119.3,
+        "p5": 39.4,
+        "p95": 203.2,
+        "contrast": 163.8
+      },
+      "dominantColorShare": 0.049,
+      "nonBackgroundShare": 0.951
+    },
+    "renderBudget": {
+      "tier": "desktop",
+      "note": "starting-point budget; adjust per game and document overrides",
+      "rows": [
+        {
+          "metric": "calls",
+          "actual": 107,
+          "limit": 300,
+          "ok": true
+        },
+        {
+          "metric": "triangles",
+          "actual": 1016285,
+          "limit": 750000,
+          "ok": false
+        },
+        {
+          "metric": "geometries",
+          "actual": 74,
+          "limit": 300,
+          "ok": true
+        },
+        {
+          "metric": "textures",
+          "actual": 18,
+          "limit": 60,
+          "ok": true
+        }
+      ],
+      "withinBudget": false
+    },
+    "diagnostics": {
+      "renderer": {
+        "calls": 107,
+        "triangles": 1016285,
+        "geometries": 74,
+        "textures": 18,
+        "dpr": 1,
+        "fps": 75,
+        "shadowMap": 2048
+      }
+    }
+  },
+  "consoleErrors": [],
+  "pageErrors": []
+}

@@ -1,0 +1,78 @@
+{
+  "source": "roadster.glb",
+  "output": "roadster-mobile.glb",
+  "toolVersions": {
+    "gltfTransform": "4.5.1",
+    "meshoptimizer": "1.3.0",
+    "draco3dgltf": "1.5.9"
+  },
+  "options": {
+    "ratio": 0.3,
+    "error": 0.005,
+    "method": "index-only topology-aware simplification with retained vertex normals and UVs, then Draco compression"
+  },
+  "before": {
+    "triangles": 608769,
+    "vertices": 411417,
+    "primitives": 105,
+    "materials": 26,
+    "images": 10
+  },
+  "after": {
+    "triangles": 201937,
+    "vertices": 181131,
+    "primitives": 105,
+    "materials": 26,
+    "images": 10
+  },
+  "bytes": {
+    "before": 7962640,
+    "after": 6868844
+  },
+  "outputSha256": "67911c8d23749cd0f5771795ca0fcaf50935c2bce208b6b15030106ab6938e69",
+  "bounds": {
+    "before": {
+      "min": [
+        -0.73652999439165,
+        -0.4594032160169237,
+        -1.8017671087085985
+      ],
+      "max": [
+        0.7365177719534162,
+        0.4593803961591456,
+        1.8017969509456244
+      ]
+    },
+    "after": {
+      "min": [
+        -0.73652999439165,
+        -0.4594032160169237,
+        -1.8016815632482157
+      ],
+      "max": [
+        0.736510018307889,
+        0.4593763046053791,
+        1.8017969509456244
+      ]
+    }
+  },
+  "textureBytesUnchanged": true,
+  "wheelNodes": [
+    {
+      "name": "TRDEF-WheelFtL",
+      "retained": true
+    },
+    {
+      "name": "TRDEF-WheelFtR",
+      "retained": true
+    },
+    {
+      "name": "TRDEF-WheelBkL",
+      "retained": true
+    },
+    {
+      "name": "TRDEF-WheelBkR",
+      "retained": true
+    }
+  ]
+}
