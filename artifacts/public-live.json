@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-19T01:57:39.693Z",
+  "url": "https://sion-rgb.github.io/roadster-rocket-lab/",
+  "httpStatus": 200,
+  "checks": [
+    "public Pages assets and Draco load",
+    "W drive",
+    "launch button takeoff",
+    "three cameras",
+    "assisted landing",
+    "partial Gamepad data stays finite",
+    "normal entry has no QA hooks"
+  ],
+  "snapshot": {
+    "vehicle": {
+      "mode": "drive",
+      "position": [
+        0,
+        0.704430878162384,
+        8
+      ],
+      "velocity": [
+        0,
+        0.000715543981641531,
+        0
+      ],
+      "speed": 0.0025759583339095117,
+      "altitude": 0.05443087816238401,
+      "energy": 53.40166666666888,
+      "grounded": true,
+      "assist": false,
+      "crashed": false,
+      "landings": 1,
+      "attitude": [
+        0,
+        0,
+        0
+      ],
+      "wheels": [
+        {
+          "contact": true,
+          "suspension": 0.28418081998825073
+        },
+        {
+          "contact": true,
+          "suspension": 0.28418081998825073
+        },
+        {
+          "contact": true,
+          "suspension": 0.28418081998825073
+        },
+        {
+          "contact": true,
+          "suspension": 0.28418081998825073
+        }
+      ]
+    },
+    "camera": "spectator",
+    "cameraPosition": [
+      47.598153926090966,
+      44.56874986978057,
+      56.39842263851244
+    ],
+    "cameraTarget": [
+      -1.1195571720615951e-13,
+      16.968775177001937,
+      7.999999999997426
+    ],
+    "transition": false,
+    "paused": false,
+    "events": [
+      {
+        "message": "道路模式 · W 加速，A / D 轉向",
+        "time": 7526.199999988079
+      },
+      {
+        "message": "車輛已重置 · 能量充滿",
+        "time": 8538.899999976158
+      },
+      {
+        "message": "Rocket 系統就緒 · 按住空白鍵起飛",
+        "time": 8575.199999988079
+      },
+      {
+        "message": "垂直起飛 · 推進器運作中",
+        "time": 8575.300000011921
+      },
+      {
+        "message": "降落輔助 · 制動、回正並緩慢下降",
+        "time": 14917.199999988079
+      },
+      {
+        "message": "精準降落完成 · 停機區已確認",
+        "time": 22569
+      }
+    ],
+    "asset": {
+      "source": "licensed-glb",
+      "triangles": 608769,
+      "meshes": 46,
+      "materials": 26,
+      "dimensions": [
+        2,
+        1.15,
+        4.5
+      ],
+      "quality": "desktop"
+    },
+    "renderer": {
+      "calls": 107,
+      "triangles": 1016285,
+      "geometries": 74,
+      "textures": 18,
+      "dpr": 1,
+      "fps": 75,
+      "shadowMap": 2048
+    },
+    "physics": {
+      "bodies": 1,
+      "colliders": 88,
+      "fixedStep": 0.016666666666666666
+    },
+    "audio": {
+      "enabled": false
+    }
+  },
+  "errors": [],
+  "failed": [],
+  "status": "PASS"
+}

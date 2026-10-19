@@ -6,11 +6,17 @@
 
 已完成可玩的 MVP，先在真正 Chrome / WebGL2 瀏覽器通過道路加速、三視角、起飛及降落，再進行材質、環境、手機 LOD、陰影及深度精度調整。最終正式 build 的 17 項瀏覽器測試通過，頁面錯誤及 HTTP 資源錯誤皆為 0。另有 12 項真實 Rapier WASM 物理檢查通過。
 
+GitHub [公開儲存庫](https://github.com/sion-rgb/roadster-rocket-lab) 的 visibility 已透過 API 確認為 PUBLIC。[Pages 線上版本](https://sion-rgb.github.io/roadster-rocket-lab/) HTTP 200，源碼 commit `52b5d2c5063154baf37eae2287f36c932c3d1409` 的 [Actions 測試、建置及部署](https://github.com/sion-rgb/roadster-rocket-lab/actions/runs/39187605556) 全部成功。
+
+部署後再以 Chrome 真實操作網站，通過 7 項線上檢查：GLB / Draco 載入、W 駕駛、起飛按鈕、三視角、輔助降落、不完整 Gamepad 資料不產生 NaN、一般入口不暴露 QA hooks。頁面及 HTTP 資源錯誤均為 0。[公開站點驗證 JSON](public-live.json) / [畫面](captures/public-live.png)。文件與證據後續提交不改動應用程式碼。
+
 - [瀏覽器完整 JSON](browser-report.json)
 - [操作錄影](motion/desktop-playthrough.webm)
 - [核心物理測試](../tests/physics.ts)
 - [瀏覽器重現腳本](../tests/browser.mjs)
 - [當次截圖覆蓋清單](evidence.json)
+
+錄影為 1440×960 WebM，44.36 秒；Chrome 本地媒體播放可解碼並前進，沒有 MediaError。此處沒有聲稱 FFmpeg 全段解碼檢查。
 
 ## 真實輸入驗證
 
