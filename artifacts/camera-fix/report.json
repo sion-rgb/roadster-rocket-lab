@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-19T12:17:28.890Z",
+  "url": "http://127.0.0.1:5190/",
+  "checks": [
+    "first-person road acceleration stays anchored",
+    "steering has no mismatched position/aim lag",
+    "first-person takeoff and hover have no artificial thrust shake",
+    "forward flight has no seat drift",
+    "intentional roll and pitch remain visible",
+    "mouse look works and holds a stable cabin-relative gaze",
+    "paused cockpit cannot accumulate shake",
+    "three camera transitions stay smooth and finite",
+    "first-person assisted touchdown stays stable",
+    "reset snaps car and camera together",
+    "390px touch-browser cockpit takeoff and hover stay anchored"
+  ],
+  "measurements": {
+    "road": {
+      "frames": 120,
+      "maxSeatErrorMm": 4.4754520913118095e-13,
+      "maxViewErrorDegrees": 0.0000024148365394514667,
+      "maxRelativeViewChangeDegrees": 0.0000029575586669421963
+    },
+    "steering": {
+      "frames": 45,
+      "maxSeatErrorMm": 9.238896857051837e-13,
+      "maxViewErrorDegrees": 0.0000024148365394514667,
+      "maxRelativeViewChangeDegrees": 0
+    },
+    "hover": {
+      "frames": 120,
+      "maxSeatErrorMm": 5.978733960281816e-13,
+      "maxViewErrorDegrees": 0,
+      "maxRelativeViewChangeDegrees": 0
+    },
+    "forwardFlight": {
+      "frames": 120,
+      "maxSeatErrorMm": 5.978733960281816e-13,
+      "maxViewErrorDegrees": 0,
+      "maxRelativeViewChangeDegrees": 0
+    },
+    "roll": {
+      "frames": 40,
+      "maxSeatErrorMm": 1.7571712741908845e-12,
+      "maxViewErrorDegrees": 0.0000029575586669421963,
+      "maxRelativeViewChangeDegrees": 0.000003818191820832845
+    },
+    "pitch": {
+      "frames": 30,
+      "maxSeatErrorMm": 1.6946818973100071e-12,
+      "maxViewErrorDegrees": 0.0000024148365394514667,
+      "maxRelativeViewChangeDegrees": 0
+    },
+    "mouseGaze": {
+      "frames": 45,
+      "maxSeatErrorMm": 1.841933275130387e-12,
+      "maxViewErrorDegrees": 20.289940272059873,
+      "maxRelativeViewChangeDegrees": 0.0000017075472925031877
+    },
+    "landed": {
+      "frames": 45,
+      "maxSeatErrorMm": 1.7850093837272237e-12,
+      "maxViewErrorDegrees": 0,
+      "maxRelativeViewChangeDegrees": 0
+    },
+    "reset": {
+      "frames": 30,
+      "maxSeatErrorMm": 2.482534153247273e-13,
+      "maxViewErrorDegrees": 0,
+      "maxRelativeViewChangeDegrees": 0
+    },
+    "mobileHover": {
+      "frames": 90,
+      "maxSeatErrorMm": 5.978733960281816e-13,
+      "maxViewErrorDegrees": 0,
+      "maxRelativeViewChangeDegrees": 0
+    }
+  },
+  "errors": [],
+  "failedRequests": [],
+  "status": "PASS"
+}

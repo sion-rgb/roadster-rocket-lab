@@ -1,13 +1,15 @@
 {
   "name": "roadster-rocket-concept",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "node tests/physics.mjs",
+    "test": "node tests/physics.mjs && npm run test:camera",
+    "test:camera": "node --import tsx tests/camera.ts",
+    "test:camera:browser": "node tests/camera-browser.mjs",
     "test:browser": "node tests/browser.mjs",
     "test:graphics": "node tests/graphics.mjs",
     "test:visual": "node tests/visual-shots.mjs"

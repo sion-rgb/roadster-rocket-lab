@@ -2,6 +2,8 @@
 
 非官方 Tesla Roadster Rocket Edition 風格的 3D 展示、沿海駕駛及飛行沙盒。
 
+**v1.1.1 第一身穩定修正：**取消座艙的人工推進器震動，統一車模與鏡頭的物理插值，消除位置 / 視線跟隨不同步造成的拉扯。保留滑鼠環視、俯仰、翻滾和 GSAP 切鏡。[修正及實測](artifacts/camera-fix/README.md)。
+
 **v1.1 畫質提升：**戶外 HDR 天空與光照、車漆 / 玻璃的場景反射、海面及濕潤停機坪平面反射、真實 PBR 道路、金屬推進器細節、連續海岸山脊及更柔和陰影。[新舊畫面及驗證](artifacts/graphics-v2/README.md)。
 
 **[直接試玩](https://sion-rgb.github.io/roadster-rocket-lab/)** · **[驗證報告](artifacts/final-evidence.md)** · **[車模來源與授權](ASSET_CREDITS.md)**
@@ -81,15 +83,19 @@ npm exec -- playwright install chromium ffmpeg
 npm run preview -- --port 5188
 # 另一個終端，預覽伺服器保持執行
 npm run test:browser
+# 針對第一身震動、環視、姿態、切鏡、降落及手機視窗的回歸測試
+npm run test:camera:browser
 ```
 
 `npm test` 使用真實 Rapier WASM 測試懸掛、加速、轉向、起飛、能量、姿態、飛行煞車、降落及重置。瀏覽器測試優先使用本機 Chrome，沒有 Chrome 時使用 Playwright Chromium；以真實鍵盤 / 滑鼠及 Chromium 觸控事件驗證核心流程，產生 JSON、桌面 / 手機截圖及 WebM 操作錄影。自訂測試網址：`SIM_URL` 環境變數；自訂 Chrome channel：`PW_CHANNEL`。
+
+`npm test` 亦包含 30 / 75 / 144 Hz 顯示更新的插值測試、旋轉跨越 180°、暫停及兩種重置時機。`test:camera:browser` 會逐幀量測鏡頭相對車廂的位置及方向，輸出至 `artifacts/camera-fix/`；自訂輸出目錄使用 `CAMERA_ARTIFACT_DIR`。
 
 `?qa=1` 才會啟用診斷與截圖 hooks；一般入口不提供修改模擬狀態的測試接口。自動截圖不能取代實體手機、Gamepad、所有瀏覽器和無障礙輔助技術的裝置驗證。
 
 ## 架構及效能
 
-`src/physics.ts` 負責物理與模擬參數；`input.ts` 統一鍵盤 / 觸控 / Gamepad 意圖；`cameras.ts` 管理視角及 GSAP 過渡；`car.ts` 載入模型；`world.ts` 建立場景；`main.ts` 統一輸入 → 固定物理 → 車模同步 → VFX / HUD / 相機 → 繪圖。
+`src/physics.ts` 負責物理與模擬參數；`input.ts` 統一鍵盤 / 觸控 / Gamepad 意圖；`cameras.ts` 管理視角及 GSAP 過渡；`render-pose.ts` 在固定物理步之間插值車身位置及四元數，車模、相機及反射共用同一姿態，顯示延後一個物理步（約 16.7 ms）；重置時直接同步，暫停時保持插值位置。`car.ts` 載入模型；`world.ts` 建立場景；`main.ts` 統一輸入 → 固定物理 → 插值 → VFX / HUD / 相機 → 繪圖。
 
 初次載入寬度 ≤760px 使用約 202k triangles 的手機車模，桌面保留約 609k；保留同一材質及紋理。實例化重複建築元素，使用簡單碰撞體；DPR 上限桌面 1.75 / 手機 1.25，單方向陰影 2048 / 1024。桌面使用 4× MSAA HDR target、輕微 Bloom 和 OutputPass；手機直接繪圖。
 

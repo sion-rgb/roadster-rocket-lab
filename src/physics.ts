@@ -7,7 +7,7 @@ export class VehiclePhysics {
   body:RAPIER.RigidBody;
   vehicle:RAPIER.DynamicRayCastVehicleController;
   mode:Mode='showcase'; energy=100; assist=false; grounded=true; crashed=false;
-  landings=0; lastImpact=0; thrust=0; steer=0; flightTime=0;
+  landings=0; lastImpact=0; thrust=0; steer=0; flightTime=0; resetCount=0;
   position=new Vector3(); rotation=new Quaternion(); velocity=new Vector3(); attitude=new Euler(0,0,0,'YXZ');
   private forward=new Vector3(); private q=new Quaternion(); private euler=new Euler(0,0,0,'YXZ');
   private priorVy=0; private airborne=false; private lastGrounded=true; private stable=0;
@@ -34,6 +34,7 @@ export class VehiclePhysics {
     this.onEvent(mode==='flight'?'Rocket 系統就緒 · 按住空白鍵起飛':'道路模式 · W 加速，A / D 轉向');
   }
   reset(){
+    this.resetCount++;
     this.body.setTranslation(this.spawn,true);this.body.setRotation({x:0,y:0,z:0,w:1},true);
     this.body.setLinvel({x:0,y:0,z:0},true);this.body.setAngvel({x:0,y:0,z:0},true);
     this.body.resetForces(true);this.body.resetTorques(true);this.energy=100;this.assist=false;this.crashed=false;this.airborne=false;this.flightTime=0;this.stable=0;this.lastImpact=0;this.priorVy=0;this.sync();

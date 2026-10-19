@@ -7,6 +7,7 @@ import { createCar } from './car';
 import { createWorld } from './world';
 import { VehiclePhysics, SIM, type Mode } from './physics';
 import { CameraRig, type CameraView } from './cameras';
+import { VehicleRenderPose } from './render-pose';
 import { Input } from './input';
 import { SynthAudio } from './audio';
 import { RocketVFX } from './vfx';
@@ -36,6 +37,7 @@ async function init(){
   const physics=new RAPIER.World({x:0,y:-SIM.gravity,z:0});
   const world=createWorld(scene,physics);
   const sim=new VehiclePhysics(physics,world.spawn,world.landingPads);
+  const renderPose=new VehicleRenderPose(sim);
   const car=createCar();scene.add(car.group);
   const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.04,3500);
   const rig=new CameraRig(camera,renderer.domElement,sim);
@@ -113,7 +115,7 @@ async function init(){
       lastMode=sim.mode;
     }
   };
-  const diagnostics=()=>({vehicle:sim.snapshot(),camera:rig.view,cameraPosition:camera.position.toArray(),cameraTarget:rig.controls.target.toArray(),transition:rig.transitioning,paused,events:events.slice(),asset:car.diagnostics,graphics:{...graphics.stats,reflectionMaterials:graphics.reflectionMaterials},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,dpr:renderer.getPixelRatio(),fps,shadowMap:mobile?1024:2048},physics:{bodies:physics.bodies.len(),colliders:physics.colliders.len(),fixedStep:SIM.fixedStep},audio:{enabled:audio.enabled,state:audio.context?.state}});
+  const diagnostics=()=>({vehicle:sim.snapshot(),camera:rig.view,cameraPosition:camera.position.toArray(),cameraQuaternion:camera.quaternion.toArray(),renderPose:{position:car.group.position.toArray(),rotation:car.group.quaternion.toArray()},cameraTarget:rig.controls.target.toArray(),transition:rig.transitioning,paused,events:events.slice(),asset:car.diagnostics,graphics:{...graphics.stats,reflectionMaterials:graphics.reflectionMaterials},renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,dpr:renderer.getPixelRatio(),fps,shadowMap:mobile?1024:2048},physics:{bodies:physics.bodies.len(),colliders:physics.colliders.len(),fixedStep:SIM.fixedStep},audio:{enabled:audio.enabled,state:audio.context?.state}});
   if(new URLSearchParams(location.search).has('qa')){
     Object.assign(window,{__ROADSTER__:{snapshot:diagnostics},__THREE_GAME_DIAGNOSTICS__:{get renderer(){return diagnostics().renderer;}},__THREE_GAME_TEST_HOOKS__:{
       async setState(state:string){
@@ -131,14 +133,17 @@ async function init(){
     const now=performance.now(),dt=Math.min((now-prior)/1000,.1);prior=now;
     if(!paused){
       time+=dt;accumulator=Math.min(.1,accumulator+dt);
-      while(accumulator>=SIM.fixedStep){const intent=input.read();if(launchTime>0){intent.lift=1;launchTime-=SIM.fixedStep;}sim.step(SIM.fixedStep,intent);accumulator-=SIM.fixedStep;}
-      car.group.position.copy(sim.position);car.group.quaternion.copy(sim.rotation);
+      while(accumulator>=SIM.fixedStep){const intent=input.read();if(launchTime>0){intent.lift=1;launchTime-=SIM.fixedStep;}sim.step(SIM.fixedStep,intent);renderPose.push();accumulator-=SIM.fixedStep;}
+    }
+    renderPose.sample(accumulator/SIM.fixedStep);
+    car.group.position.copy(renderPose.position);car.group.quaternion.copy(renderPose.rotation);
+    if(!paused){
       const localForward=new THREE.Vector3(0,0,-1).applyQuaternion(sim.rotation);wheelSpin-=sim.velocity.dot(localForward)*dt/SIM.wheelRadius;
       car.wheels.forEach((w,i)=>{w.position.y=SIM.wheelConnectionY-(sim.vehicle.wheelSuspensionLength(i)??.3);w.rotation.x=wheelSpin;w.rotation.y=i<2?-sim.steer:0;});
       world.update(dt,time);vfx.update(dt,sim.thrust,car.thrusters);
-    }else accumulator=0;
-    rig.update(paused?0:dt,time);
-    graphics.update(dt,time,sim.position,sim.rotation,sim.thrust);
+    }
+    rig.update(paused?0:dt,time,renderPose);
+    graphics.update(dt,time,renderPose.position,renderPose.rotation,sim.thrust);
     audio.update(sim.velocity.length(),sim.thrust,paused);
     graphics.render(dt);
     frames++;frameClock+=dt;if(frameClock>1){fps=Math.round(frames/frameClock);frameClock=0;frames=0;}

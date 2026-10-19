@@ -1,0 +1,22 @@
+{
+  "version": "1.1.0",
+  "source": "Local production preview, Windows Chrome",
+  "hover": {
+    "frames": 150,
+    "seatErrorRangeMm": [
+      13.645364944770256,
+      12.564187679291905,
+      0
+    ],
+    "maxSeatErrorMm": 9.245999361069826
+  },
+  "moving": {
+    "frames": 150,
+    "seatErrorRangeMm": [
+      13.967766515107616,
+      12.350996382625823,
+      222.46075163050705
+    ],
+    "maxSeatErrorMm": 223.28767671792272
+  }
+}

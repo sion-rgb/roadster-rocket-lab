@@ -20,8 +20,8 @@ export class CameraRig {
     this.view=view;this.start.copy(this.camera.position);this.startTarget.copy(this.look);this.startUp.copy(this.camera.up);this.blend.value=0;this.gaze={x:0,y:0};this.controls.enabled=false;this.controls.autoRotate=false;
     gsap.to(this.blend,{value:1,duration:this.reduced?.01:1.15,ease:'power2.inOut',overwrite:true,onComplete:()=>{if(view==='spectator'||this.sim.mode==='showcase'&&view==='chase'){this.controls.target.copy(this.look);this.controls.update();this.controls.enabled=true;}}});
   }
-  update(dt:number,time:number){
-    const {position:p,rotation:r}=this.sim;
+  update(dt:number,time:number,pose:Pick<VehiclePhysics,'position'|'rotation'>=this.sim){
+    const {position:p,rotation:r}=pose;
     const showcase=this.sim.mode==='showcase'&&this.view==='chase';
     if((this.view==='spectator'||showcase)&&this.blend.value===1){
       this.controls.enabled=true;this.controls.autoRotate=showcase&&!this.reduced;this.controls.autoRotateSpeed=.45;this.controls.enablePan=this.view==='spectator';this.controls.update(dt);this.look.copy(this.controls.target);return;
@@ -38,8 +38,12 @@ export class CameraRig {
       this.desired.copy(offset).applyQuaternion(this.yaw).add(p);this.target.copy(p).add(showcase?new Vector3(innerWidth<761?.35:1.7,.15,0):new Vector3(0,.4,0));
     }
     if(this.blend.value<1){this.camera.position.lerpVectors(this.start,this.desired,this.blend.value);this.look.lerpVectors(this.startTarget,this.target,this.blend.value);}
-    else{this.camera.position.lerp(this.desired,1-Math.exp(-dt*(this.view==='cockpit'?40:5)));this.look.lerp(this.target,1-Math.exp(-dt*8));}
-    if(!this.reduced&&this.sim.thrust>.3&&this.view!=='spectator'){const shake=this.sim.thrust*.012;this.camera.position.x+=Math.sin(time*79)*shake;this.camera.position.y+=Math.cos(time*93)*shake;}
+    // The cockpit stays anchored to the rendered cabin. Different world-space
+    // position/aim damping made the dashboard drift and the horizon wobble.
+    else if(this.view==='cockpit'){this.camera.position.copy(this.desired);this.look.copy(this.target);}
+    else{this.camera.position.lerp(this.desired,1-Math.exp(-dt*5));this.look.lerp(this.target,1-Math.exp(-dt*8));}
+    // Keep cinematic thrust shake outside the cockpit for a comfortable first-person view.
+    if(dt>0&&!this.reduced&&this.sim.thrust>.3&&this.view==='chase'){const shake=this.sim.thrust*.012;this.camera.position.x+=Math.sin(time*79)*shake;this.camera.position.y+=Math.cos(time*93)*shake;}
     this.upDelta.setFromUnitVectors(this.startUp,this.desiredUp);this.upBlend.identity().slerp(this.upDelta,this.blend.value);
     this.camera.up.copy(this.startUp).applyQuaternion(this.upBlend);
     this.camera.lookAt(this.look);
